@@ -1,12 +1,14 @@
 import socket
+
 from .segment import Segment
 
+
 class Connection:
-    def __init__(self, ip : str, port : int):
+    def __init__(self, ip: str, port: int):
         # Init UDP socket
         pass
 
-    def send_data(self, msg : Segment, dest : ("ip", "port")):
+    def send_data(self, msg: Segment, dest: tuple("ip", "port")):
         # Send single segment into destination
         pass
 
