@@ -22,15 +22,18 @@ class SegmentFlag:
         self.flag = flag
 
     def __str__(self) -> str:
-        to_bin = int(self.flag.decode(), 2)
+        to_bin = self.to_uint()
         return FLAGS[to_bin]
 
     def get_flag_bytes(self) -> bytes:
         # Convert this object to flag in byte form
         return self.flag
 
+    def to_uint(self):
+        return int(self.flag.decode(), 2)
+
     @staticmethod
-    def flag_to_byte(flag: str):
+    def uint_to_byte(flag: int):
         return format(flag, "08b").encode()
 
 
@@ -47,6 +50,7 @@ class Segment:
         output += f"{'Acknowledgement number':24} | {self.ack_num}\n"
         output += f"{'Flag number':24} | {str(self.flag)}\n"
         output += f"{'Checksum':24} | {self.checksum}\n"
+        output += f"{'Payload':24} | {self.payload.decode()}"
         return output
 
     def __calculate_checksum(self) -> int:
@@ -88,17 +92,18 @@ class Segment:
     def set_from_bytes(self, src: bytes):
         # From pure bytes, unpack() and set into python variable
         (self.seq_num, self.ack_num, tmp, self.checksum, self.payload) = unpack(
-            "<ii8sxh32756s", src
+            "<iiBxh32756s", src
         )
+        tmp = SegmentFlag.uint_to_byte(tmp)
         self.flag = SegmentFlag(tmp)
 
     def get_bytes(self) -> bytes:
         # Convert this object to pure bytes
         return pack(
-            "<ii8sxh32756s",
+            "<iiBxh32756s",
             self.seq_num,
             self.ack_num,
-            self.flag.get_flag_bytes(),
+            self.flag.to_uint(),
             self.checksum,
             self.payload,
         )
@@ -113,7 +118,7 @@ if __name__ == "__main__":
     header = {
         "seq_num": 2,
         "ack_num": 3,
-        "flag": SegmentFlag.flag_to_byte(SYN_FLAG),
+        "flag": SegmentFlag.uint_to_byte(SYN_FLAG),
         "checksum": 1,
     }
     data = b"capek kuliah"
@@ -121,9 +126,11 @@ if __name__ == "__main__":
     seg.set_header(header)
     seg.set_payload(data)
     print(seg)
+    print(len(seg.get_bytes()))
 
     # Simulate sending
-    sender = seg.get_bytes()
+    seg_sender = seg.get_bytes()
     recv = Segment()
-    recv.set_from_bytes(sender)
+    recv.set_from_bytes(seg_sender)
     print(recv)
+    print(len(recv.get_bytes()))
