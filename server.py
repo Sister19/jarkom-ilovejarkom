@@ -49,7 +49,25 @@ class Server:
 
     def three_way_handshake(self, client_addr: tuple(("ip", "port"))) -> bool:
         # Three way handshake, server-side, 1 client
-        pass
+        print("[!] Server initiating handshake.")
+        print("[Handshake] Sending SYN...")
+        head = SegmentHeader(seq_num=0, ack_num=0, flag=[SYN_FLAG])
+        self.conn.send_data(Segment().build(header=head, payload=b""), client_addr)
+
+        data, addr = self.conn.listen_single_segment()
+        print(client_addr, addr)
+        if client_addr != addr:
+            print("[!] Handshake interrupted by another client, aborting...")
+            return False
+
+        syn_ack_seg = Segment().build_from_bytes(bytes_data=data)
+        if syn_ack_seg.get_header().flag.value != SYN_ACK:
+            print("[!] Wrong flag recieved from client, aborting...")
+            return False
+
+        print("[Handshake] Received SYN ACK from client")
+        print("[!] Starting to initiate file transfer.")
+        return True
 
     def __deassemble(self, file: bytes):
         i = 0
@@ -73,6 +91,7 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--port", default=8080, type=int, help="Port of server")
     args = parser.parse_args()
 
-    main = Server()
-    main.listen_for_clients()
-    main.start_file_transfer()
+    main = Server("127.0.0.1", 8080)
+    main.three_way_handshake(("127.0.0.1", 3000))
+    # main.listen_for_clients()
+    # main.start_file_transfer()

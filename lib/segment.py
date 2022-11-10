@@ -60,12 +60,7 @@ class Segment:
         return self.flag
 
     def get_header(self) -> SegmentHeader:
-        return SegmentHeader(
-            seq_num=self.seq_num,
-            ack_num=self.ack_num,
-            flag=self.flag,
-            checksum=self.checksum,
-        )
+        return SegmentHeader(seq_num=self.seq_num, ack_num=self.ack_num, flag=self.flag)
 
     def get_payload(self) -> bytes:
         return self.payload
@@ -105,7 +100,7 @@ class Segment:
         self.set_checksum()
         return self
 
-    def build(self, bytes_data: bytes):
+    def build_from_bytes(self, bytes_data: bytes):
         self.set_from_bytes(bytes_data)
         self.set_checksum()
         return self
