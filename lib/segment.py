@@ -1,40 +1,25 @@
+from dataclasses import dataclass
 from struct import *
+from typing import List
 
-# Constants
-NULL_FLAG = 0b00000000
-FIN_FLAG = 0b00000001
-SYN_FLAG = 0b00000010
-ACK_FLAG = 0b00010000
-SYN_ACK = SYN_FLAG + ACK_FLAG
-FLAGS = {
-    NULL_FLAG: "NULL_FLAG",
-    SYN_FLAG: "SYN_FLAG",
-    ACK_FLAG: "ACK_FLAG",
-    FIN_FLAG: "FIN_FLAG",
-    SYN_ACK: "SYN_ACK",
-}
+from lib.flags import *
+
+MAX_PAYLOAD = 32756
 
 
-# Segments
+@dataclass
 class SegmentFlag:
-    def __init__(self, flag: bytes):
-        # Init flag variable from flag byte
-        self.flag = flag
+    value: int
 
     def __str__(self) -> str:
-        to_bin = self.to_uint()
-        return FLAGS[to_bin]
+        return FLAGS[self.value]
 
-    def get_flag_bytes(self) -> bytes:
-        # Convert this object to flag in byte form
-        return self.flag
 
-    def to_uint(self):
-        return int(self.flag.decode(), 2)
-
-    @staticmethod
-    def uint_to_byte(flag: int):
-        return format(flag, "08b").encode()
+@dataclass
+class SegmentHeader:
+    seq_num: int
+    ack_num: int
+    flag: List[int]
 
 
 class Segment:
@@ -44,7 +29,6 @@ class Segment:
         pass
 
     def __str__(self):
-        # Optional, override this method for easier print(segmentA)
         output = ""
         output += f"{'Sequence number':24} | {self.seq_num}\n"
         output += f"{'Acknowledgement number':24} | {self.ack_num}\n"
@@ -53,16 +37,11 @@ class Segment:
         output += f"{'Payload':24} | {self.payload.decode()}"
         return output
 
-    def __calculate_checksum(self) -> int:
-        # Calculate checksum here, return checksum result
-        return 1  # STUB
-
     # -- Setter --
-    def set_header(self, header: dict):
-        self.seq_num = header["seq_num"]
-        self.ack_num = header["ack_num"]
-        self.flag = SegmentFlag(header["flag"])  # pasti bytes
-        self.checksum = header["checksum"]
+    def set_header(self, header: SegmentHeader):
+        self.seq_num = header.seq_num
+        self.ack_num = header.ack_num
+        self.set_flag(header.flag)
 
     def set_payload(self, payload: bytes):
         self.payload = payload
@@ -73,17 +52,20 @@ class Segment:
             tmp += flag
         self.flag = SegmentFlag(tmp)
 
+    def set_checksum(self):
+        self.checksum = self.__calculate_checksum()
+
     # -- Getter --
     def get_flag(self) -> SegmentFlag:
         return self.flag
 
-    def get_header(self) -> dict:
-        return {
-            "seq_num": self.seq_num,
-            "ack_num": self.ack_num,
-            "flag": self.flag,
-            "checksum": self.checksum,
-        }
+    def get_header(self) -> SegmentHeader:
+        return SegmentHeader(
+            seq_num=self.seq_num,
+            ack_num=self.ack_num,
+            flag=self.flag,
+            checksum=self.checksum,
+        )
 
     def get_payload(self) -> bytes:
         return self.payload
@@ -92,35 +74,49 @@ class Segment:
     def set_from_bytes(self, src: bytes):
         # From pure bytes, unpack() and set into python variable
         (self.seq_num, self.ack_num, tmp, self.checksum, self.payload) = unpack(
-            "<iiBxh32756s", src
+            f"<iiBxh{MAX_PAYLOAD}s", src
         )
-        tmp = SegmentFlag.uint_to_byte(tmp)
         self.flag = SegmentFlag(tmp)
 
     def get_bytes(self) -> bytes:
         # Convert this object to pure bytes
         return pack(
-            "<iiBxh32756s",
+            f"<iiBxh{MAX_PAYLOAD}s",
             self.seq_num,
             self.ack_num,
-            self.flag.to_uint(),
+            self.flag.value,
             self.checksum,
             self.payload,
         )
 
     # -- Checksum --
+    def __calculate_checksum(self) -> int:
+        # Calculate checksum here, return checksum result
+        return 1  # STUB
+
     def valid_checksum(self) -> bool:
         # Use __calculate_checksum() and check integrity of this object
         return self.__calculate_checksum() == self.checksum
 
+    # -- Builder --
+    def build(self, header: SegmentHeader, payload: bytes):
+        self.set_header(header)
+        self.set_payload(payload)
+        self.set_checksum()
+        return self
+
+    def build(self, bytes_data: bytes):
+        self.set_from_bytes(bytes_data)
+        self.set_checksum()
+        return self
+
 
 if __name__ == "__main__":
-    header = {
-        "seq_num": 2,
-        "ack_num": 3,
-        "flag": SegmentFlag.uint_to_byte(SYN_FLAG),
-        "checksum": 1,
-    }
+    header = SegmentHeader(
+        seq_num=3,
+        ack_num=1,
+        flag=[SYN_FLAG, ACK_FLAG],
+    )
     data = b"capek kuliah"
     seg = Segment()
     seg.set_header(header)
