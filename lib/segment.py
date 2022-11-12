@@ -34,7 +34,7 @@ class Segment:
         output += f"{'Acknowledgement number':24} | {self.ack_num}\n"
         output += f"{'Flag number':24} | {str(self.flag)}\n"
         output += f"{'Checksum':24} | {self.checksum}\n"
-        output += f"{'Payload':24} | {self.payload.decode()}"
+        output += f"{'Payload':24} | {self.payload}"
         return output
 
     # -- Setter --
@@ -68,15 +68,18 @@ class Segment:
     # -- Marshalling --
     def set_from_bytes(self, src: bytes):
         # From pure bytes, unpack() and set into python variable
+        dynamic_size = len(src) - 12
+
         (self.seq_num, self.ack_num, tmp, self.checksum, self.payload) = unpack(
-            f"<iiBxh{MAX_PAYLOAD}s", src
+            f"<iiBxh{dynamic_size}s", src
         )
         self.flag = SegmentFlag(tmp)
 
     def get_bytes(self) -> bytes:
         # Convert this object to pure bytes
+        dynamic_size = len(self.payload)
         return pack(
-            f"<iiBxh{MAX_PAYLOAD}s",
+            f"<iiBxh{dynamic_size}s",
             self.seq_num,
             self.ack_num,
             self.flag.value,
