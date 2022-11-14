@@ -32,26 +32,39 @@ class Client:
     def listen_file_transfer(self, server_addr: tuple(("ip", "port"))):
         # File transfer, client-side
         filebody = b""
-        data, server_addr = self.conn.listen_single_segment()
+        segment_num = 1
+        #data, server_addr = self.conn.listen_single_segment() #ADA TRY CATCH NYA ? SEMISAL CHECKSUM DI LISTEN SINGLE ELEMENT GAGAL
         while True:
-            seg = Segment().build_from_bytes(bytes_data=data)
-            if seg.get_header().flag.value == FIN_FLAG:
-                self.conn.close_socket()
-                break
-            else:
-                print(f"[!] [Client] Received 1 segment number {seg.seq_num}.")
-                self.conn.send_data(
-                    Segment().build(
-                        SegmentHeader(seq_num=0, ack_num=seg.seq_num, flag=[ACK_FLAG]),
-                        b"",
-                    ),
-                    server_addr,
-                )
-                filebody += seg.payload
-            data, server_addr = self.conn.listen_single_segment()
+            try :
+                data, server_addr = self.conn.listen_single_segment()
+                seg = Segment().build_from_bytes(bytes_data=data)
+                if seg.get_header().flag.value == FIN_FLAG:
+                    head = SegmentHeader(seq_num=0, ack_num=0, flag=[ACK_FLAG])
+                    self.conn.send_data(Segment().build(header=head, payload=b""), server_addr)
+                    self.conn.close_socket()
+                    break
+                elif segment_num == seg.seq_num :
+                    print(f"[!] [Client] Received 1 segment number {seg.seq_num}.")
+                    self.conn.send_data(
+                        Segment().build(
+                            SegmentHeader(seq_num=0, ack_num=seg.seq_num, flag=[ACK_FLAG]),
+                            b"",
+                        ),
+                        server_addr,
+                    )
+                    segment_num += 1
+                    filebody += seg.payload
+            except Exception as e :
+                #kalau checksum gagal ato timeout
+                print(e)
+                
+            
+            # data, server_addr = self.conn.listen_single_segment()
+            # seg = Segment().build_from_bytes(bytes_data=data)
 
         # print(filebody)
-        print(len(filebody))
+        #print(len(filebody))
+
         return
 
 

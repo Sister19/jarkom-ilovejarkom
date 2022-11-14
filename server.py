@@ -70,37 +70,83 @@ class Server:
             if not self.three_way_handshake(client.address):
                 print("[!] Handshake failed, proceed to the next client.")
                 continue
-            print(f"[Client {i}] Starting file transfer...")
+            print(f"[Client {i}] Initiating file transfer...")
             self.file_transfer(segments, client.address)
 
     def file_transfer(
         self, segments: List[Segment], client_addr: tuple(("ip", "port"))
     ):
-        # Implementing stop and wait first to see if it works
-        sent = [0 for seg in segments]
-        last_sent = 1
-        while sum(sent) != len(segments):
-            self.conn.send_data(segments[last_sent - 1], client_addr)
-            data, addr = self.conn.listen_single_segment()
-            ack_seg = Segment().build_from_bytes(bytes_data=data)
-            if (
-                ack_seg.get_header().flag.value == ACK_FLAG
-                and ack_seg.ack_num == last_sent
-            ):
-                sent[last_sent - 1] = 1
-                last_sent += 1
-                print(
-                    f"[Client 1] Received ack number {ack_seg.ack_num} from client"
-                )
-            else:
-                print(f"[Client 1] Error occurred")
-                print("Last segment received from client:")
-                print(ack_seg)
+        # # Implementing stop and wait first to see if it works
+        # sent = [0 for seg in segments]
+        # last_sent = 1
+        # while sum(sent) != len(segments):
+        #     self.conn.send_data(segments[last_sent - 1], client_addr)
+        #     data, addr = self.conn.listen_single_segment()
+        #     ack_seg = Segment().build_from_bytes(bytes_data=data)
+        #     if (
+        #         ack_seg.get_header().flag.value == ACK_FLAG
+        #         and ack_seg.ack_num == last_sent
+        #     ):
+        #         sent[last_sent - 1] = 1
+        #         last_sent += 1
+        #         print(
+        #             f"[Client 1] Received ack number {ack_seg.ack_num} from client"
+        #         )
+        #     else:
+        #         print(f"[Client 1] Error occurred")
+        #         print("Last segment received from client:")
+        #         print(ack_seg)
 
+        # self.conn.send_data(
+        #     Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""),
+        #     client_addr,
+        # )
+
+        #Go-Back-N Protocol
+        first_segment = 0
+        last_segment = 0
+        n = len(segments)
+        window_size = min(n,3)
+
+        
+        while(first_segment<n) :
+            if (last_segment-first_segment) < window_size and last_segment<n:
+                self.conn.send_data(segments[last_segment], client_addr)
+                print(f"[Segment SEQ={last_segment+1}] Sent")
+
+                last_segment += 1
+            
+            else:
+                try :
+                    data, addr = self.conn.listen_single_segment(0.05)
+                    ack_seg = Segment().build_from_bytes(bytes_data=data)
+                    if (
+                        ack_seg.get_header().flag.value == ACK_FLAG
+                    ) :
+                        if ack_seg.ack_num == first_segment+1 :
+                            print(f"[Segment SEQ={first_segment+1}] Acked")
+
+                            first_segment += 1
+                        else :
+                            last_segment = first_segment
+                            print(f"[Segment SEQ={first_segment+1}] Ack is not valid")
+                except Exception as e :
+                    last_segment = first_segment
+                    print("[TIMEOUT] ACK response timeout")
+
+        
         self.conn.send_data(
             Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""),
             client_addr,
         )
+        print("[FIN] Sending FIN .....")
+
+        data, addr = self.conn.listen_single_segment()
+        ack_seg = Segment().build_from_bytes(bytes_data=data)
+            
+        if ack_seg.get_header().flag.value == ACK_FLAG :
+            self.conn.close_socket()  
+            print("[FIN] Acked\nConnection closed")
 
     def __read_file_to_bytes(self, filename: str) -> bytes:
         data = b""

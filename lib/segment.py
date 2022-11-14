@@ -71,7 +71,7 @@ class Segment:
         dynamic_size = len(src) - 12
 
         (self.seq_num, self.ack_num, tmp, self.checksum, self.payload) = unpack(
-            f"<iiBxh{dynamic_size}s", src
+            f"<iiBxH{dynamic_size}s", src
         )
         self.flag = SegmentFlag(tmp)
 
@@ -79,7 +79,7 @@ class Segment:
         # Convert this object to pure bytes
         dynamic_size = len(self.payload)
         return pack(
-            f"<iiBxh{dynamic_size}s",
+            f"<iiBxH{dynamic_size}s",
             self.seq_num,
             self.ack_num,
             self.flag.value,
@@ -113,14 +113,12 @@ class Segment:
         checksum = self.__add_number(checksum,right_ackNum)
 
         # For the flag byte, augment with empty padding which is 0
-        print(self.flag.value)
         flag_Byte = (self.flag.value) << 8
         checksum = self.__add_number(checksum, flag_Byte)
 
         # Sum for all data in payload
         for i in range (0,len(self.payload),2):
             payload_bytes = self.payload[i:i+2]
-            print(payload_bytes, end=" ")
             data_to_integer = int.from_bytes(payload_bytes, "big")
             if len(payload_bytes) == 2: # sudah 16 bits
                 data_to_integer = int.from_bytes(payload_bytes, "big")
