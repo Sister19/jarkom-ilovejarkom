@@ -11,7 +11,7 @@ class Connection:
         # Init UDP socket
         self.ip = ip
         self.port = port
-        self.sock = socket(AF_INET, SOCK_STREAM)
+        self.sock = socket(AF_INET, SOCK_DGRAM)
         self.sock.bind((ip, port))
 
     def send_data(self, msg: Segment, dest: tuple(("ip", "port"))):
@@ -28,10 +28,11 @@ class Connection:
                     seg = Segment()
                     seg.set_from_bytes(data)
 
-                    print("=" * 50)
-                    print("Recieved data from " + f"{address[0]}:{address[1]}")
-                    print(seg)
-                    print("=" * 50)
+                    # Uncomment to see the received data in the connection
+                    # print("=" * 50)
+                    # print("Recieved data from " + f"{address[0]}:{address[1]}")
+                    # print(seg)
+                    # print("=" * 50)
                     break
 
             return data, address

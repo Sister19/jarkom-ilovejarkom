@@ -37,24 +37,27 @@ class Server:
 
     def three_way_handshake(self, client_addr: tuple(("ip", "port"))) -> bool:
         # Three way handshake, server-side, 1 client
-        print("[Handshake] Sending SYN...")
+        print("[Handshake] Sending SYN ACK to client")
         self.conn.send_data(
-            Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[SYN_FLAG]), b""),
+            Segment().build(
+                SegmentHeader(seq_num=0, ack_num=0, flag=[SYN_FLAG, ACK_FLAG]), b""
+            ),
             client_addr,
         )
 
+        # Waiting ACK from client
         data, addr = self.conn.listen_single_segment()
-        # DONT FORGET TO CHECKSUM (NOT IMPLEMENTED YET)
+        seg = Segment().build_from_bytes(bytes_data=data)
+
         if client_addr != addr:
             print("[!] Handshake interrupted by another client, aborting...")
             return False
 
-        syn_ack_seg = Segment().build_from_bytes(bytes_data=data)
-        if syn_ack_seg.get_header().flag.value != SYN_ACK:
+        if seg.get_header().flag.value != ACK_FLAG:
             print("[!] Wrong flag recieved from client, aborting...")
             return False
 
-        print("[Handshake] Received SYN ACK from client")
+        print("[Handshake] Received ACK from client, handshake success!")
         return True
 
     def start_file_transfer(self, filename: str):
@@ -63,9 +66,9 @@ class Server:
         segments = self.__deassemble(file)
         i = 1
         for _, client in self.clients.items():
-            print(f"[!] Server initiating handshake to client {i}")
+            print(f"[Handshake] Server responding client {i} handshake")
             if not self.three_way_handshake(client.address):
-                print("[!] Handshake failed...")
+                print("[!] Handshake failed, proceed to the next client.")
                 continue
             print(f"[Client {i}] Starting file transfer...")
             self.file_transfer(segments, client.address)
@@ -87,10 +90,10 @@ class Server:
                 sent[last_sent - 1] = 1
                 last_sent += 1
                 print(
-                    f"[!] [Server] Received segment number {ack_seg.ack_num} from client"
+                    f"[Client 1] Received ack number {ack_seg.ack_num} from client"
                 )
             else:
-                print(f"[!] [Server] Error occurred")
+                print(f"[Client 1] Error occurred")
                 print("Last segment received from client:")
                 print(ack_seg)
 
