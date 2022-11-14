@@ -144,7 +144,6 @@ class Segment:
 
     def build_from_bytes(self, bytes_data: bytes):
         self.set_from_bytes(bytes_data)
-        self.set_checksum()
         return self
 
 
