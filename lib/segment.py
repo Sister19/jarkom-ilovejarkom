@@ -88,9 +88,50 @@ class Segment:
         )
 
     # -- Checksum --
+    def __add_number(self,number1,number2):
+        # This function is used in calculate checksum, handle if the sum of 2 numbers has a carry
+        # If the sum does have a carry in front, then remove the carry and add it to the back of the integer
+        result = (number1 + number2) & 0xFFFF
+        result += (number1 + number2) >> 16
+        return result
+
     def __calculate_checksum(self) -> int:
         # Calculate checksum here, return checksum result
-        return 1  # STUB
+        # Using 16-bit one complement checksum
+        checksum = 0
+
+        # Sum the seq number first, group byte offset 0 1 and 2 3 to make it 16 bit
+        left_seqNum = (self.seq_num & 0xFFFF0000) >> 16
+        right_seqNum = (self.seq_num & 0x0000FFFF) 
+        checksum = self.__add_number(checksum,left_seqNum)
+        checksum = self.__add_number(checksum,right_seqNum)
+
+        # Do the same for the ack number
+        left_ackNum = (self.ack_num & 0xFFFF0000) >> 16
+        right_ackNum = (self.ack_num & 0x0000FFFF) 
+        checksum = self.__add_number(checksum,left_ackNum)
+        checksum = self.__add_number(checksum,right_ackNum)
+
+        # For the flag byte, augment with empty padding which is 0
+        print(self.flag.value)
+        flag_Byte = (self.flag.value) << 8
+        checksum = self.__add_number(checksum, flag_Byte)
+
+        # Sum for all data in payload
+        for i in range (0,len(self.payload),2):
+            payload_bytes = self.payload[i:i+2]
+            print(payload_bytes, end=" ")
+            data_to_integer = int.from_bytes(payload_bytes, "big")
+            if len(payload_bytes) == 2: # sudah 16 bits
+                data_to_integer = int.from_bytes(payload_bytes, "big")
+            else : # 8 bits aja, maka padding
+                data_to_integer = (int.from_bytes(payload_bytes, "big")) << 8
+            checksum = self.__add_number(checksum, data_to_integer)
+
+        # To complement it
+        checksum = 0xFFFF - checksum
+
+        return checksum
 
     def valid_checksum(self) -> bool:
         # Use __calculate_checksum() and check integrity of this object
@@ -119,12 +160,11 @@ if __name__ == "__main__":
     seg = Segment()
     seg.set_header(header)
     seg.set_payload(data)
-    print(seg)
-    print(len(seg.get_bytes()))
+    seg.set_checksum()
 
     # Simulate sending
     seg_sender = seg.get_bytes()
     recv = Segment()
     recv.set_from_bytes(seg_sender)
-    print(recv)
-    print(len(recv.get_bytes()))
+    # print(recv)
+    # print(len(recv.get_bytes()))
