@@ -11,7 +11,7 @@ class Connection:
         # Init UDP socket
         self.ip = ip
         self.port = port
-        self.sock = socket(AF_INET, SOCK_DGRAM)
+        self.sock = socket(AF_INET, SOCK_STREAM)
         self.sock.bind((ip, port))
 
     def send_data(self, msg: Segment, dest: tuple(("ip", "port"))):
