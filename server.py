@@ -22,18 +22,21 @@ class Server:
 
     def listen_for_clients(self):
         # Waiting client for connect
-        ans = "y"
-        print("[!] Server listening for clients...")
-        while ans.lower() == "y":
-            data, address = self.conn.listen_single_segment()
-            addr = f"{address[0]}:{address[1]}"
-            if addr not in self.clients:
-                self.clients[addr] = ClientStatus(
-                    address=(address[0], address[1]), last_ack=0, fin=False
-                )
-            else:
-                print(f"Client {addr} has previously connected.")
-            ans = input("[?] Listen more? (y/n) ")
+        try :
+            ans = "y"
+            print("[!] Server listening for clients...")
+            while ans.lower() == "y":
+                data, address = self.conn.listen_single_segment(60)
+                addr = f"{address[0]}:{address[1]}"
+                if addr not in self.clients:
+                    self.clients[addr] = ClientStatus(
+                        address=(address[0], address[1]), last_ack=0, fin=False
+                    )
+                else:
+                    print(f"Client {addr} has previously connected.")
+                ans = input("[?] Listen more? (y/n) ")
+        except Exception as e :
+            print(e)
 
     def three_way_handshake(self, client_addr: tuple(("ip", "port"))) -> bool:
         # Three way handshake, server-side, 1 client
@@ -72,6 +75,9 @@ class Server:
                 continue
             print(f"[Client {i}] Initiating file transfer...")
             self.file_transfer(segments, client.address)
+            i += 1
+
+        self.conn.close_socket()  
 
     def file_transfer(
         self, segments: List[Segment], client_addr: tuple(("ip", "port"))
@@ -118,7 +124,7 @@ class Server:
             
             else:
                 try :
-                    data, addr = self.conn.listen_single_segment(0.05)
+                    data, addr = self.conn.listen_single_segment(1)
                     ack_seg = Segment().build_from_bytes(bytes_data=data)
                     if (
                         ack_seg.get_header().flag.value == ACK_FLAG
@@ -135,18 +141,21 @@ class Server:
                     print("[TIMEOUT] ACK response timeout")
 
         
-        self.conn.send_data(
-            Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""),
-            client_addr,
-        )
-        print("[FIN] Sending FIN .....")
+        
 
-        data, addr = self.conn.listen_single_segment()
-        ack_seg = Segment().build_from_bytes(bytes_data=data)
+        try:
+            self.conn.send_data(
+                Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""),
+                client_addr,
+            )
+            print("[FIN] Sending FIN .....")
+            data, addr = self.conn.listen_single_segment(2)
+            ack_seg = Segment().build_from_bytes(bytes_data=data)
             
-        if ack_seg.get_header().flag.value == ACK_FLAG :
-            self.conn.close_socket()  
-            print("[FIN] Acked\nConnection closed")
+            if ack_seg.get_header().flag.value == ACK_FLAG :
+                print("[FIN] Acked")
+        except Exception as e :
+            print(e)
 
     def __read_file_to_bytes(self, filename: str) -> bytes:
         data = b""

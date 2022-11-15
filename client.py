@@ -1,5 +1,6 @@
 from lib.connection import *
 from lib.segment import *
+import argparse
 
 
 class Client:
@@ -36,7 +37,7 @@ class Client:
         #data, server_addr = self.conn.listen_single_segment() #ADA TRY CATCH NYA ? SEMISAL CHECKSUM DI LISTEN SINGLE ELEMENT GAGAL
         while True:
             try :
-                data, server_addr = self.conn.listen_single_segment()
+                data, server_addr = self.conn.listen_single_segment(5)
                 seg = Segment().build_from_bytes(bytes_data=data)
                 if seg.get_header().flag.value == FIN_FLAG:
                     head = SegmentHeader(seq_num=0, ack_num=0, flag=[ACK_FLAG])
@@ -57,6 +58,7 @@ class Client:
             except Exception as e :
                 #kalau checksum gagal ato timeout
                 print(e)
+                break
                 
             
             # data, server_addr = self.conn.listen_single_segment()
@@ -69,6 +71,10 @@ class Client:
 
 
 if __name__ == "__main__":
-    main = Client("127.0.0.1", 3000)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--port", default=3000, type=int, help="Port of server")
+    args = parser.parse_args()
+
+    main = Client("127.0.0.1", args.port)
     main.three_way_handshake(("127.0.0.1", 8080))
     main.listen_file_transfer(("127.0.0.1", 8080))
