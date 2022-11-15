@@ -27,6 +27,9 @@ class Connection:
                 if data:
                     seg = Segment()
                     seg.set_from_bytes(data)
+                    if not (seg.valid_checksum):
+                        raise Exception("Checksum tidak sama!")
+
 
                     # Uncomment to see the received data in the connection
                     # print("=" * 50)
