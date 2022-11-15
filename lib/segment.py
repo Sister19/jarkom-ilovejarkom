@@ -95,7 +95,7 @@ class Segment:
         result += (number1 + number2) >> 16
         return result
 
-    def __calculate_checksum(self) -> int:
+    def __calculate_checksum(self, complement = True) -> int:
         # Calculate checksum here, return checksum result
         # Using 16-bit one complement checksum
         checksum = 0
@@ -127,13 +127,14 @@ class Segment:
             checksum = self.__add_number(checksum, data_to_integer)
 
         # To complement it
-        checksum = 0xFFFF - checksum
+        if complement:
+            checksum = 0xFFFF - checksum
 
         return checksum
 
     def valid_checksum(self) -> bool:
         # Use __calculate_checksum() and check integrity of this object
-        return self.__calculate_checksum() == self.checksum
+        return self.__calculate_checksum(complement = False) + self.checksum == 0xFFFF
 
     # -- Builder --
     def build(self, header: SegmentHeader, payload: bytes):
