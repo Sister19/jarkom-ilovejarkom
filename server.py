@@ -88,10 +88,10 @@ class Server:
                 print("[!] Handshake failed, proceed to the next client.")
                 continue
             print(f"[Client {i}] Initiating file transfer...")
-            thread = threading.Thread(target=self.file_transfer, args=(segments, client.address,i,))
+            thread = threading.Thread(target=self.file_transfer, args=(segments, client.address,i,filename,))
             threads.append(thread)
             if not (parallel):
-                self.file_transfer(segments, client.address,i)
+                self.file_transfer(segments, client.address,i,filename)
             i += 1
 
         if (parallel):
@@ -103,7 +103,7 @@ class Server:
         self.conn.close_socket()  
 
     def file_transfer(
-        self, segments: List[Segment], client_addr: tuple(("ip", "port")), number = 1
+        self, segments: List[Segment], client_addr: tuple(("ip", "port")), number = 1, filename = ""
     ):
         # # Implementing stop and wait first to see if it works
         # sent = [0 for seg in segments]
@@ -137,7 +137,26 @@ class Server:
         n = len(segments)
         window_size = min(n,3)
 
+        # SEND METADATA
+        ack_metadata = False
+        filename_bytes = bytes(filename, 'utf-8')
+        header = SegmentHeader(seq_num=0, ack_num=0, flag=[SYN_FLAG])
+        filename_segment = Segment().build(header=header, payload=filename_bytes)
+        while not ack_metadata:
+            try: 
+                print(f"[!] [Client {number}] [Metadata] Sent")
+                self.conn.send_data(filename_segment, client_addr)
+                data, addr = self.conn.listen_single_segment(1)
+                ack_seg = Segment().build_from_bytes(bytes_data=data)
+                if (
+                    ack_seg.get_header().flag.value == ACK_FLAG
+                ) :
+                    print(f"[!] [Client {number}] [Metadata] [ACK] Acked")
+                    ack_metadata = True
+            except Exception as e :
+                print(e)
         
+        # SEND SEGMENTS
         while(first_segment<n) :
             if (last_segment-first_segment) < window_size and last_segment<n:
                 self.conn.send_data(segments[last_segment], client_addr)

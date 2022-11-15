@@ -1,5 +1,6 @@
 from lib.connection import *
 from lib.segment import *
+import os
 import argparse
 
 
@@ -34,7 +35,30 @@ class Client:
         # File transfer, client-side
         filebody = b""
         segment_num = 1
+        filename = "client_files/result.txt" # DEFAULT
         #data, server_addr = self.conn.listen_single_segment() #ADA TRY CATCH NYA ? SEMISAL CHECKSUM DI LISTEN SINGLE ELEMENT GAGAL
+
+        # RECEIVE METADATA
+        try:
+            data, server_addr = self.conn.listen_single_segment(5)
+            seg = Segment().build_from_bytes(bytes_data=data)
+            print(f"[!] [Client] [Metadata] Received Metadata")
+            path = seg.payload.decode("utf-8")
+            filename = os.path.basename(path)
+            filename = "client_files/" + filename
+            self.conn.send_data(
+                Segment().build(
+                    SegmentHeader(seq_num=0, ack_num=seg.seq_num, flag=[ACK_FLAG]),
+                    b"",
+                ),
+                server_addr,
+            )
+
+        except Exception as e :
+            #kalau checksum gagal ato timeout
+            print(e)
+
+        # RECEIVE PAYLOAD
         while True:
             try :
                 data, server_addr = self.conn.listen_single_segment(5)
@@ -60,7 +84,7 @@ class Client:
                 print(e)
                 break
         
-        self.__write_bytes_to_file(filebody)
+        self.__write_bytes_to_file(filebody, filename)
             
             # data, server_addr = self.conn.listen_single_segment()
             # seg = Segment().build_from_bytes(bytes_data=data)
