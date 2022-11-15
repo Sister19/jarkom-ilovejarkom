@@ -59,7 +59,8 @@ class Client:
                 #kalau checksum gagal ato timeout
                 print(e)
                 break
-                
+        
+        self.__write_bytes_to_file(filebody)
             
             # data, server_addr = self.conn.listen_single_segment()
             # seg = Segment().build_from_bytes(bytes_data=data)
@@ -67,7 +68,13 @@ class Client:
         # print(filebody)
         #print(len(filebody))
 
-        return
+        return 
+
+    def __write_bytes_to_file(self, filebody: bytes, filename = "client_files/result.txt") -> bytes:
+
+        f = open(filename, "wb")
+        f.write(filebody)
+        f.close()
 
 
 if __name__ == "__main__":

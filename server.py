@@ -212,6 +212,7 @@ class Server:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-b", "--broadcastport", default=8080, type=int, help="Port of server")
+    parser.add_argument("-f", "--pathfile", default="server_files/git.exe", help="Path file input")
     args = parser.parse_args()
 
     main = Server("127.0.0.1", args.broadcastport)
@@ -222,4 +223,4 @@ if __name__ == "__main__":
     print(f'[!] Source File | {os.path.basename(sourcefile)} | {file.st_size} bytes')
 
     main.listen_for_clients()
-    main.start_file_transfer("server_files/git.exe")
+    main.start_file_transfer(args.pathfile)
