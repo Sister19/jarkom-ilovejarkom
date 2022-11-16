@@ -169,7 +169,7 @@ class Server:
                     except Exception as e:
                         last_segment = first_segment
                         print(
-                            f"[!] [Client {number}] [ERROR segment {first_segment}] ACK response error: {str(e)}"
+                            f"[!] [Client {number}] [ERROR segment {first_segment}+1] ACK response error: {str(e)}"
                         )
 
         # PARALLEL VERSION:
@@ -270,7 +270,7 @@ class Server:
             except Exception as e:
                 vars["last_segment"] = vars["first_segment"]
                 print(
-                    f"[!] [Client {number}] [ERROR segment {vars['first_segment']}]  ACK response error: {str(e)}"
+                    f"[!] [Client {number}] [ERROR segment {vars['first_segment']+1}]  ACK response error: {str(e)}"
                 )
 
 
