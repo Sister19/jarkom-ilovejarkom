@@ -169,38 +169,38 @@ class Server:
                     except Exception as e:
                         last_segment = first_segment
                         print(
-                            f"[!] [Client {number}] [ERROR segment {last_segment}] ACK response error: {str(e)}"
+                            f"[!] [Client {number}] [ERROR segment {first_segment}] ACK response error: {str(e)}"
                         )
 
         # PARALLEL VERSION:
         else:
             vars = {"first_segment": 0, "last_segment": 0}
-            while vars["first_segment"] < n:
-                # THREAD FOR SEND DATA
-                t1 = threading.Thread(
-                    target=self.__send_data_parallel,
-                    args=(
-                        segments,
-                        vars,
-                        client_addr,
-                        number,
-                        window_size,
-                        n,
-                    ),
-                )
-                # THREAD FOR RECEIVING DATA
-                t2 = threading.Thread(
-                    target=self.__receive_data_parallel,
-                    args=(
-                        number,
-                        vars,
-                    ),
-                )
-                # START THE THREAD AND JOIN
-                t1.start()
-                t2.start()
-                t1.join()
-                t2.join()
+            # THREAD FOR SEND DATA
+            t1 = threading.Thread(
+                target=self.__send_data_parallel,
+                args=(
+                    segments,
+                    vars,
+                    client_addr,
+                    number,
+                    window_size,
+                    n,
+                ),
+            )
+            # THREAD FOR RECEIVING DATA
+            t2 = threading.Thread(
+                target=self.__receive_data_parallel,
+                args=(
+                    number,
+                    vars,
+                    n,
+                ),
+            )
+            # START THE THREAD AND JOIN
+            t1.start()
+            t2.start()
+            t1.join()
+            t2.join()
 
         try:
             self.conn.send_data(
@@ -247,37 +247,31 @@ class Server:
         return segments
 
     def __send_data_parallel(self, segments, vars, client_addr, number, window_size, n):
-        first_segment = vars["first_segment"]
-        last_segment = vars["last_segment"]
-        while (last_segment - first_segment) < window_size and last_segment < n:
-            self.conn.send_data(segments[last_segment], client_addr)
-            print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
-            last_segment += 1
-        vars["last_segment"] = last_segment
+        while (vars["first_segment"] < n):
+            while (vars["last_segment"] - vars["first_segment"]) < window_size and vars["last_segment"] < n:
+                self.conn.send_data(segments[vars["last_segment"]], client_addr)
+                print(f"[!] [Client {number}] [Num={vars['last_segment']+1}] Sent")
+                vars["last_segment"] += 1
 
-    def __receive_data_parallel(self, number, vars):
-        first_segment = vars["first_segment"]
-        last_segment = vars["last_segment"]
-        try:
-            data, addr = self.conn.listen_single_segment(1)
-            ack_seg = Segment().build_from_bytes(bytes_data=data)
-            if ack_seg.get_header().flag.value == ACK_FLAG:
-                if ack_seg.ack_num == first_segment + 1:
-                    print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Segment acked")
-                    first_segment += 1
-                else:
-                    last_segment = first_segment
-                    print(
-                        f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid"
-                    )
-        except Exception as e:
-            last_segment = first_segment
-            print(
-                f"[!] [Client {number}] [ERROR segment {last_segment}]  ACK response error: {str(e)}"
-            )
-
-        vars["first_segment"] = first_segment
-        vars["last_segment"] = last_segment
+    def __receive_data_parallel(self, number, vars,n):
+        while (vars["first_segment"] < n):
+            try:
+                data, addr = self.conn.listen_single_segment(1)
+                ack_seg = Segment().build_from_bytes(bytes_data=data)
+                if ack_seg.get_header().flag.value == ACK_FLAG:
+                    if ack_seg.ack_num == vars["first_segment"] + 1:
+                        print(f"[!] [Client {number}] [Num={vars['first_segment']+1}] [ACK] Segment acked")
+                        vars["first_segment"] += 1
+                    else:
+                        vars["last_segment"] = vars["first_segment"]
+                        print(
+                            f"[!] [Client {number}] [Num={vars['first_segment']+1}] [ACK] Ack is not valid"
+                        )
+            except Exception as e:
+                vars["last_segment"] = vars["first_segment"]
+                print(
+                    f"[!] [Client {number}] [ERROR segment {vars['first_segment']}]  ACK response error: {str(e)}"
+                )
 
 
 if __name__ == "__main__":
