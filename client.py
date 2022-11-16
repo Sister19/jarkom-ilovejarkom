@@ -1,7 +1,8 @@
+import argparse
+import os
+
 from lib.connection import *
 from lib.segment import *
-import os
-import argparse
 
 
 class Client:
@@ -35,18 +36,19 @@ class Client:
         # File transfer, client-side
         filebody = b""
         segment_num = 1
-        filepath = "client_files/result.txt" # DEFAULT
-        #data, server_addr = self.conn.listen_single_segment() #ADA TRY CATCH NYA ? SEMISAL CHECKSUM DI LISTEN SINGLE ELEMENT GAGAL
+        filepath = "client_files/result.txt"  # DEFAULT
 
         # RECEIVE METADATA
         try:
             data, server_addr = self.conn.listen_single_segment(5)
             seg = Segment().build_from_bytes(bytes_data=data)
-            print(f"[!] [Client] [Metadata] Received Metadata")
+            print("[!] [Client] [Metadata] Received Metadata")
             path = seg.payload.decode("utf-8")
-            filename= os.path.basename(path)
-            filename_arr = filename.rsplit('.', 1)
-            print(f"[!] [Client] [Metadata] Filename: {filename_arr[0]} | Extension: .{filename_arr[1]}")
+            filename = os.path.basename(path)
+            filename_arr = filename.rsplit(".", 1)
+            print(
+                f"[!] [Client] [Metadata] Filename: {filename_arr[0]} | Extension: .{filename_arr[1]}"
+            )
 
             filepath = "client_files/" + filename
 
@@ -57,49 +59,47 @@ class Client:
                 ),
                 server_addr,
             )
-
-        except Exception as e :
-            #kalau checksum gagal ato timeout
+        except Exception as e:
+            # kalau checksum gagal ato timeout
             print(e)
 
         # RECEIVE PAYLOAD
         while True:
-            try :
+            try:
                 data, server_addr = self.conn.listen_single_segment(5)
                 seg = Segment().build_from_bytes(bytes_data=data)
                 if seg.get_header().flag.value == FIN_FLAG:
                     head = SegmentHeader(seq_num=0, ack_num=0, flag=[ACK_FLAG])
-                    self.conn.send_data(Segment().build(header=head, payload=b""), server_addr)
+                    self.conn.send_data(
+                        Segment().build(header=head, payload=b""), server_addr
+                    )
                     self.conn.close_socket()
                     break
-                elif segment_num == seg.seq_num :
+                elif segment_num == seg.seq_num:
                     print(f"[!] [Client] [Num={seg.seq_num}] Received Segment")
                     self.conn.send_data(
                         Segment().build(
-                            SegmentHeader(seq_num=0, ack_num=seg.seq_num, flag=[ACK_FLAG]),
+                            SegmentHeader(
+                                seq_num=0, ack_num=seg.seq_num, flag=[ACK_FLAG]
+                            ),
                             b"",
                         ),
                         server_addr,
                     )
                     segment_num += 1
                     filebody += seg.payload
-            except Exception as e :
-                #kalau checksum gagal ato timeout
+            except Exception as e:
+                # kalau checksum gagal ato timeout
                 print(e)
                 break
-        
+
         self.__write_bytes_to_file(filebody, filepath)
-            
-            # data, server_addr = self.conn.listen_single_segment()
-            # seg = Segment().build_from_bytes(bytes_data=data)
 
-        # print(filebody)
-        #print(len(filebody))
+        return
 
-        return 
-
-    def __write_bytes_to_file(self, filebody: bytes, filename = "client_files/result.txt") -> bytes:
-
+    def __write_bytes_to_file(
+        self, filebody: bytes, filename="client_files/result.txt"
+    ) -> bytes:
         f = open(filename, "wb")
         f.write(filebody)
         f.close()
@@ -107,8 +107,12 @@ class Client:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-b", "--broadcastport", default=8080, type=int, help="Port of server")
-    parser.add_argument("-c", "--clientport", default=3000, type=int, help="Port of client")
+    parser.add_argument(
+        "-b", "--broadcastport", default=8080, type=int, help="Port of server"
+    )
+    parser.add_argument(
+        "-c", "--clientport", default=3000, type=int, help="Port of client"
+    )
     parser.add_argument("-f", "--filepath", default="result", help="Port of client")
 
     args = parser.parse_args()

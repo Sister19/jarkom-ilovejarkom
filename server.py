@@ -1,7 +1,7 @@
 import argparse
+import os
 import threading
 from dataclasses import dataclass
-import os
 
 from lib.connection import *
 from lib.segment import *
@@ -24,7 +24,7 @@ class Server:
 
     def listen_for_clients(self):
         # Waiting client for connect
-        try :
+        try:
             ans = "y"
             print("[!] Listening to broadcast address for clients.\n")
             while ans.lower() == "y":
@@ -38,15 +38,15 @@ class Server:
                 else:
                     print(f"[!] Client {addr} has previously connected.")
                 ans = input("[?] Listen more? (y/n) ")
-            
+
             print("\nClient list:")
             number = 1
             for addr in self.clients:
                 print(f"{number}. {addr}")
                 number += 1
             print("\n[!] Commencing file transfer...")
-            
-        except Exception as e :
+
+        except Exception as e:
             print(e)
 
     def three_way_handshake(self, client_addr: tuple(("ip", "port"))) -> bool:
@@ -75,9 +75,9 @@ class Server:
         return True
 
     # PARALELL INI UNTUK MENGAKTIFKAN FITURNYA
-    def start_file_transfer(self, filename: str, parallel = True):
+    def start_file_transfer(self, filename: str, parallel=True):
         # Handshake & file transfer for all client
-        
+
         file = self.__read_file_to_bytes(filename)
         segments = self.__deassemble(file)
         i = 1
@@ -88,113 +88,113 @@ class Server:
                 print("[!] Handshake failed, proceed to the next client.")
                 continue
             print(f"[!] [Client {i}] Initiating file transfer...")
-            thread = threading.Thread(target=self.file_transfer, args=(segments, client.address,i,filename,))
+            thread = threading.Thread(
+                target=self.file_transfer,
+                args=(
+                    segments,
+                    client.address,
+                    i,
+                    filename,
+                ),
+            )
             threads.append(thread)
             if not (parallel):
-                self.file_transfer(segments, client.address,i,filename)
+                self.file_transfer(segments, client.address, i, filename)
             i += 1
 
-        if (parallel):
+        if parallel:
             for thread in threads:
                 thread.start()
             for thread in threads:
                 thread.join()
 
-        self.conn.close_socket()  
+        self.conn.close_socket()
 
     def file_transfer(
-        self, segments: List[Segment], client_addr: tuple(("ip", "port")), number = 1, filename = "", parallel = True
+        self,
+        segments: List[Segment],
+        client_addr: tuple(("ip", "port")),
+        number=1,
+        filename="",
+        parallel=True,
     ):
-        # # Implementing stop and wait first to see if it works
-        # sent = [0 for seg in segments]
-        # last_sent = 1
-        # while sum(sent) != len(segments):
-        #     self.conn.send_data(segments[last_sent - 1], client_addr)
-        #     data, addr = self.conn.listen_single_segment()
-        #     ack_seg = Segment().build_from_bytes(bytes_data=data)
-        #     if (
-        #         ack_seg.get_header().flag.value == ACK_FLAG
-        #         and ack_seg.ack_num == last_sent
-        #     ):
-        #         sent[last_sent - 1] = 1
-        #         last_sent += 1
-        #         print(
-        #             f"[Client 1] Received ack number {ack_seg.ack_num} from client"
-        #         )
-        #     else:
-        #         print(f"[Client 1] Error occurred")
-        #         print("Last segment received from client:")
-        #         print(ack_seg)
 
-        # self.conn.send_data(
-        #     Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""),
-        #     client_addr,
-        # )
-
-        #Go-Back-N Protocol
+        # Go-Back-N Protocol
         first_segment = 0
         last_segment = 0
         n = len(segments)
-        window_size = min(n,3)
+        window_size = min(n, 3)
 
         # SEND METADATA
         ack_metadata = False
-        filename_bytes = bytes(filename, 'utf-8')
+        filename_bytes = bytes(filename, "utf-8")
         header = SegmentHeader(seq_num=0, ack_num=0, flag=[SYN_FLAG])
         filename_segment = Segment().build(header=header, payload=filename_bytes)
         while not ack_metadata:
-            try: 
+            try:
                 print(f"[!] [Client {number}] [Metadata] Sent")
                 self.conn.send_data(filename_segment, client_addr)
                 data, addr = self.conn.listen_single_segment(1)
                 ack_seg = Segment().build_from_bytes(bytes_data=data)
-                if (
-                    ack_seg.get_header().flag.value == ACK_FLAG
-                ) :
+                if ack_seg.get_header().flag.value == ACK_FLAG:
                     print(f"[!] [Client {number}] [Metadata] [ACK] Acked")
                     ack_metadata = True
-            except Exception as e :
+            except Exception as e:
                 print(e)
-        
+
         # SEND SEGMENTS
         # NON PARALLEL VERSION :
-        if not parallel :
-            while(first_segment<n) :
-                if (last_segment-first_segment) < window_size and last_segment<n:
+        if not parallel:
+            while first_segment < n:
+                if (last_segment - first_segment) < window_size and last_segment < n:
                     self.conn.send_data(segments[last_segment], client_addr)
                     print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
                     last_segment += 1
-                
+
                 else:
-                    try :
+                    try:
                         data, addr = self.conn.listen_single_segment(1)
                         ack_seg = Segment().build_from_bytes(bytes_data=data)
-                        if (
-                            ack_seg.get_header().flag.value == ACK_FLAG
-                        ) :
-                            if ack_seg.ack_num == first_segment+1 :
-                                print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Acked")
+                        if ack_seg.get_header().flag.value == ACK_FLAG:
+                            if ack_seg.ack_num == first_segment + 1:
+                                print(
+                                    f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Acked"
+                                )
                                 first_segment += 1
-                            else :
+                            else:
                                 last_segment = first_segment
-                                print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid")
-                    except Exception as e :
+                                print(
+                                    f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid"
+                                )
+                    except Exception as e:
                         last_segment = first_segment
-                        print(f"[!] [Client {number}] [TIMEOUT] ACK response timeout")
-        # PARALLEL VERSION: 
-        else :
+                        print(
+                            f"[!] [Client {number}] [ERROR] ACK response error: {str(e)}"
+                        )
+
+        # PARALLEL VERSION:
+        else:
             vars = {}
             threads = []
-            while(first_segment<n) :
+            while first_segment < n:
                 # THREAD FOR SEND DATA
-                while (last_segment-first_segment) < window_size and last_segment<n:
-                    thread = threading.Thread(target=self.__send_data_parallel, args=(segments,last_segment,client_addr,number))
+                while (last_segment - first_segment) < window_size and last_segment < n:
+                    thread = threading.Thread(
+                        target=self.__send_data_parallel,
+                        args=(segments, last_segment, client_addr, number),
+                    )
                     threads.append(thread)
                     last_segment += 1
-                # THREAD FOR RECEIVING DATA
+                    # THREAD FOR RECEIVING DATA
                     vars["first_segment"] = first_segment
                     vars["last_segment"] = last_segment
-                    thread = threading.Thread(target=self.__receive_data_parallel, args=(number, vars,))
+                    thread = threading.Thread(
+                        target=self.__receive_data_parallel,
+                        args=(
+                            number,
+                            vars,
+                        ),
+                    )
                     threads.append(thread)
                 # START THE THREAD AND JOIN
                 for thread in threads:
@@ -203,19 +203,21 @@ class Server:
                     thread.join()
                 first_segment = vars["first_segment"]
                 last_segment = vars["last_segment"]
-        
+
         try:
             self.conn.send_data(
-                Segment().build(SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""),
+                Segment().build(
+                    SegmentHeader(seq_num=0, ack_num=0, flag=[FIN_FLAG]), b""
+                ),
                 client_addr,
             )
             print(f"[!] [Client {number}] [FIN] Sending FIN .....")
             data, addr = self.conn.listen_single_segment(2)
             ack_seg = Segment().build_from_bytes(bytes_data=data)
-            
-            if ack_seg.get_header().flag.value == ACK_FLAG :
+
+            if ack_seg.get_header().flag.value == ACK_FLAG:
                 print(f"[!] [Client {number}] [FIN] Acked")
-        except Exception as e :
+        except Exception as e:
             print(e)
 
     def __read_file_to_bytes(self, filename: str) -> bytes:
@@ -246,36 +248,41 @@ class Server:
 
         return segments
 
-    def __send_data_parallel(self,segments,last_segment,client_addr,number):
-            self.conn.send_data(segments[last_segment], client_addr)
-            print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
+    def __send_data_parallel(self, segments, last_segment, client_addr, number):
+        self.conn.send_data(segments[last_segment], client_addr)
+        print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
 
-    def __receive_data_parallel(self,number,vars) :
-        first_segment= vars["first_segment"]
+    def __receive_data_parallel(self, number, vars):
+        first_segment = vars["first_segment"]
         last_segment = vars["last_segment"]
-        try :
+        try:
             data, addr = self.conn.listen_single_segment(1)
             ack_seg = Segment().build_from_bytes(bytes_data=data)
-            if (
-                ack_seg.get_header().flag.value == ACK_FLAG 
-            ) :
-                if ack_seg.ack_num == first_segment+1 :
+            if ack_seg.get_header().flag.value == ACK_FLAG:
+                if ack_seg.ack_num == first_segment + 1:
                     print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Acked")
                     first_segment += 1
-                else :
+                else:
                     last_segment = first_segment
-                    print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid")
-        except Exception as e :
+                    print(
+                        f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid"
+                    )
+        except Exception as e:
             last_segment = first_segment
             print(f"[!] [Client {number}] [TIMEOUT] ACK response timeout")
 
         vars["first_segment"] = first_segment
         vars["last_segment"] = last_segment
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-b", "--broadcastport", default=8080, type=int, help="Port of server")
-    parser.add_argument("-f", "--pathfile", default="server_files/git.exe", help="Path file input")
+    parser.add_argument(
+        "-b", "--broadcastport", default=8080, type=int, help="Port of server"
+    )
+    parser.add_argument(
+        "-f", "--pathfile", default="server_files/git.exe", help="Path file input"
+    )
     args = parser.parse_args()
 
     main = Server("127.0.0.1", args.broadcastport)
@@ -283,7 +290,7 @@ if __name__ == "__main__":
     print(f"[!] Server started at localhost:{args.broadcastport}")
     sourcefile = "server_files/git.exe"
     file = os.stat(sourcefile)
-    print(f'[!] Source File | {os.path.basename(sourcefile)} | {file.st_size} bytes')
+    print(f"[!] Source File | {os.path.basename(sourcefile)} | {file.st_size} bytes")
 
     main.listen_for_clients()
     main.start_file_transfer(args.pathfile)
