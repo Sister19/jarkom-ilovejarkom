@@ -177,31 +177,35 @@ class Server:
             vars = {}
             threads = []
             while first_segment < n:
+                vars["first_segment"] = first_segment
+                vars["last_segment"] = last_segment
                 # THREAD FOR SEND DATA
-                while (last_segment - first_segment) < window_size and last_segment < n:
-                    thread = threading.Thread(
-                        target=self.__send_data_parallel,
-                        args=(segments, last_segment, client_addr, number),
-                    )
-                    threads.append(thread)
-                    last_segment += 1
-                    # THREAD FOR RECEIVING DATA
-                    vars["first_segment"] = first_segment
-                    vars["last_segment"] = last_segment
-                    thread = threading.Thread(
-                        target=self.__receive_data_parallel,
-                        args=(
-                            number,
-                            vars,
-                        ),
-                    )
-                    threads.append(thread)
+                t1 = threading.Thread(
+                    target=self.__send_data_parallel,
+                    args=(
+                        segments,
+                        vars,
+                        client_addr,
+                        number,
+                        window_size,
+                        n,
+                    ),
+                )
+                # THREAD FOR RECEIVING DATA
+                t2 = threading.Thread(
+                    target=self.__receive_data_parallel,
+                    args=(
+                        number,
+                        vars,
+                    ),
+                )
                 # START THE THREAD AND JOIN
-                for thread in threads:
-                    thread.start()
-                for thread in threads:
-                    thread.join()
+                t1.start()
+                t2.start()
+                t1.join()
+                t2.join()
                 first_segment = vars["first_segment"]
+                print(first_segment)
                 last_segment = vars["last_segment"]
 
         try:
@@ -248,9 +252,14 @@ class Server:
 
         return segments
 
-    def __send_data_parallel(self, segments, last_segment, client_addr, number):
-        self.conn.send_data(segments[last_segment], client_addr)
-        print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
+    def __send_data_parallel(self, segments, vars, client_addr, number, window_size, n):
+        first_segment = vars["first_segment"]
+        last_segment = vars["last_segment"]
+        while (last_segment - first_segment) < window_size and last_segment < n:
+            self.conn.send_data(segments[last_segment], client_addr)
+            print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
+            last_segment += 1
+        vars["last_segment"] = last_segment
 
     def __receive_data_parallel(self, number, vars):
         first_segment = vars["first_segment"]
