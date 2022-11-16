@@ -330,7 +330,7 @@ class Server:
     def __listen_data_parallel(self, number, vars,n, addr):
         while (vars["first_segment"] < n):
             try:
-                data, addr = self.conn.listen_single_segment(0.1)
+                data, addr = self.conn.listen_single_segment(0.8)
                 addr_string = self.__addr_toString(addr)
                 self.address_queue[addr_string].append(data)
             except Exception as e:
