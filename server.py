@@ -183,6 +183,7 @@ class Server:
                         print(f"[!] [Client {number}] [TIMEOUT] ACK response timeout")
         # PARALLEL VERSION: 
         else :
+            vars = {}
             threads = []
             while(first_segment<n) :
                 # THREAD FOR SEND DATA
@@ -191,7 +192,6 @@ class Server:
                     threads.append(thread)
                     last_segment += 1
                 # THREAD FOR RECEIVING DATA
-                    vars= {}
                     vars["first_segment"] = first_segment
                     vars["last_segment"] = last_segment
                     thread = threading.Thread(target=self.__receive_data_parallel, args=(number, vars,))
