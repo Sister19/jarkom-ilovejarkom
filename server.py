@@ -23,6 +23,7 @@ class Server:
         self.clients = {}
         self.clients_parallel = clients_parallel
         self.data_parallel = data_parallel
+        self.address_queue = {}
 
     def __listen_client_parallel(self, vars, queue):
         while (not vars["finished"]):
@@ -92,6 +93,7 @@ class Server:
             print("\nClient list:")
             number = 1
             for addr in self.clients:
+                self.address_queue[addr] = []
                 print(f"{number}. {addr}")
                 number += 1
             print("\n[!] Commencing file transfer...")
@@ -160,6 +162,9 @@ class Server:
 
         self.conn.close_socket()
 
+    def __addr_toString(self,adr):
+        return str(adr[0]) + ":" + str(adr[1])
+
     def file_transfer(
         self,
         segments: List[Segment],
@@ -203,18 +208,23 @@ class Server:
                 else:
                     try:
                         data, addr = self.conn.listen_single_segment(1)
-                        ack_seg = Segment().build_from_bytes(bytes_data=data)
-                        if ack_seg.get_header().flag.value == ACK_FLAG:
-                            if ack_seg.ack_num == first_segment + 1:
-                                print(
-                                    f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Segment acked"
-                                )
-                                first_segment += 1
-                            else:
-                                last_segment = first_segment
-                                print(
-                                    f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid"
-                                )
+                        addr_string = self.__addr_toString(addr)
+                        client_addr_string = self.__addr_toString(client_addr)
+                        self.address_queue[addr_string].append(data)
+                        if self.address_queue[client_addr_string] : # Ini handle ack dari client2 diterima thread1, jadinya thread2 gadapet ack alhasil timeout terus
+                            client_data = self.address_queue[client_addr_string].pop(0)
+                            ack_seg = Segment().build_from_bytes(bytes_data=client_data)
+                            if ack_seg.get_header().flag.value == ACK_FLAG:
+                                if ack_seg.ack_num == first_segment + 1:
+                                    print(
+                                        f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Segment acked"
+                                    )
+                                    first_segment += 1
+                                else:
+                                    last_segment = first_segment
+                                    print(
+                                        f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid"
+                                    )
                     except Exception as e:
                         last_segment = first_segment
                         print(
@@ -224,7 +234,6 @@ class Server:
         # PARALLEL VERSION:
         else:
             vars = {"first_segment": 0, "last_segment": 0}
-            queue = []
             # THREAD FOR SEND DATA
             t1 = threading.Thread(
                 target=self.__send_data_parallel,
@@ -244,7 +253,7 @@ class Server:
                     number,
                     vars,
                     n,
-                    queue,
+                    client_addr,
                 ),
             )
 
@@ -254,7 +263,7 @@ class Server:
                     number,
                     vars,
                     n,
-                    queue,
+                    client_addr,
                 ),
             )
 
@@ -318,23 +327,24 @@ class Server:
                 print(f"[!] [Client {number}] [Num={vars['last_segment']+1}] Sent")
                 vars["last_segment"] += 1
 
-    def __listen_data_parallel(self, number, vars,n, queue):
+    def __listen_data_parallel(self, number, vars,n, addr):
         while (vars["first_segment"] < n):
             try:
                 data, addr = self.conn.listen_single_segment(0.1)
-                queue.append(data)
+                addr_string = self.__addr_toString(addr)
+                self.address_queue[addr_string].append(data)
             except Exception as e:
                 if vars["first_segment"] < n:
                     vars["last_segment"] = vars["first_segment"]
                     print(
                         f"[!] [Client {number}] [ERROR segment {vars['first_segment']+1}]  ACK response error: {str(e)}"
                     )
-                
             
-    def __receive_data_parallel(self, number, vars,n, queue):
+    def __receive_data_parallel(self, number, vars,n, addr):
         while (vars["first_segment"] < n):
-            if len(queue) > 0:
-                data = queue.pop(0)
+            addr_string = self.__addr_toString(addr)
+            if len(self.address_queue[addr_string]) > 0:
+                data = self.address_queue[addr_string].pop(0)
                 ack_seg = Segment().build_from_bytes(bytes_data=data)
                 if ack_seg.get_header().flag.value == ACK_FLAG:
                     if ack_seg.ack_num == vars["first_segment"] + 1:
