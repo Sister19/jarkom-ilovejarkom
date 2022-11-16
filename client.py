@@ -35,7 +35,7 @@ class Client:
         # File transfer, client-side
         filebody = b""
         segment_num = 1
-        filename = "client_files/result.txt" # DEFAULT
+        filepath = "client_files/result.txt" # DEFAULT
         #data, server_addr = self.conn.listen_single_segment() #ADA TRY CATCH NYA ? SEMISAL CHECKSUM DI LISTEN SINGLE ELEMENT GAGAL
 
         # RECEIVE METADATA
@@ -44,8 +44,12 @@ class Client:
             seg = Segment().build_from_bytes(bytes_data=data)
             print(f"[!] [Client] [Metadata] Received Metadata")
             path = seg.payload.decode("utf-8")
-            filename = os.path.basename(path)
-            filename = "client_files/" + filename
+            filename= os.path.basename(path)
+            filename_arr = filename.rsplit('.', 1)
+            print(f"[!] [Client] [Metadata] Filename: {filename_arr[0]} | Extension: .{filename_arr[1]}")
+
+            filepath = "client_files/" + filename
+
             self.conn.send_data(
                 Segment().build(
                     SegmentHeader(seq_num=0, ack_num=seg.seq_num, flag=[ACK_FLAG]),
@@ -84,7 +88,7 @@ class Client:
                 print(e)
                 break
         
-        self.__write_bytes_to_file(filebody, filename)
+        self.__write_bytes_to_file(filebody, filepath)
             
             # data, server_addr = self.conn.listen_single_segment()
             # seg = Segment().build_from_bytes(bytes_data=data)
