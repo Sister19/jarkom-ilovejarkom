@@ -272,14 +272,15 @@ class Server:
     def __listen_data_parallel(self, number, vars,n, queue):
         while (vars["first_segment"] < n):
             try:
-                if vars["first_segment"] < n:
-                    data, addr = self.conn.listen_single_segment(1)
-                    queue.append(data)
+                data, addr = self.conn.listen_single_segment(0.1)
+                queue.append(data)
             except Exception as e:
-                vars["last_segment"] = vars["first_segment"]
-                print(
-                    f"[!] [Client {number}] [ERROR segment {vars['first_segment']+1}]  ACK response error: {str(e)}"
-                )
+                if vars["first_segment"] < n:
+                    vars["last_segment"] = vars["first_segment"]
+                    print(
+                        f"[!] [Client {number}] [ERROR segment {vars['first_segment']+1}]  ACK response error: {str(e)}"
+                    )
+                
             
     def __receive_data_parallel(self, number, vars,n, queue):
         while (vars["first_segment"] < n):
