@@ -28,14 +28,7 @@ class Connection:
                     seg = Segment()
                     seg.set_from_bytes(data)
                     if not (seg.valid_checksum):
-                        raise Exception("Checksum tidak sama!")
-
-
-                    # Uncomment to see the received data in the connection
-                    # print("=" * 50)
-                    # print("Recieved data from " + f"{address[0]}:{address[1]}")
-                    # print(seg)
-                    # print("=" * 50)
+                        raise ValueError("Checksum tidak sama!")
                     break
 
             return data, address

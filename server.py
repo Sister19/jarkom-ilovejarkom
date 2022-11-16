@@ -137,7 +137,7 @@ class Server:
                 data, addr = self.conn.listen_single_segment(1)
                 ack_seg = Segment().build_from_bytes(bytes_data=data)
                 if ack_seg.get_header().flag.value == ACK_FLAG:
-                    print(f"[!] [Client {number}] [Metadata] [ACK] Acked")
+                    print(f"[!] [Client {number}] [Metadata] [ACK] Segment acked")
                     ack_metadata = True
             except Exception as e:
                 print(e)
@@ -158,7 +158,7 @@ class Server:
                         if ack_seg.get_header().flag.value == ACK_FLAG:
                             if ack_seg.ack_num == first_segment + 1:
                                 print(
-                                    f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Acked"
+                                    f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Segment acked"
                                 )
                                 first_segment += 1
                             else:
@@ -169,16 +169,13 @@ class Server:
                     except Exception as e:
                         last_segment = first_segment
                         print(
-                            f"[!] [Client {number}] [ERROR] ACK response error: {str(e)}"
+                            f"[!] [Client {number}] [ERROR segment {last_segment}] ACK response error: {str(e)}"
                         )
 
         # PARALLEL VERSION:
         else:
-            vars = {}
-            threads = []
-            while first_segment < n:
-                vars["first_segment"] = first_segment
-                vars["last_segment"] = last_segment
+            vars = {"first_segment": 0, "last_segment": 0}
+            while vars["first_segment"] < n:
                 # THREAD FOR SEND DATA
                 t1 = threading.Thread(
                     target=self.__send_data_parallel,
@@ -204,9 +201,6 @@ class Server:
                 t2.start()
                 t1.join()
                 t2.join()
-                first_segment = vars["first_segment"]
-                print(first_segment)
-                last_segment = vars["last_segment"]
 
         try:
             self.conn.send_data(
@@ -269,7 +263,7 @@ class Server:
             ack_seg = Segment().build_from_bytes(bytes_data=data)
             if ack_seg.get_header().flag.value == ACK_FLAG:
                 if ack_seg.ack_num == first_segment + 1:
-                    print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Acked")
+                    print(f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Segment acked")
                     first_segment += 1
                 else:
                     last_segment = first_segment
@@ -278,7 +272,9 @@ class Server:
                     )
         except Exception as e:
             last_segment = first_segment
-            print(f"[!] [Client {number}] [TIMEOUT] ACK response timeout")
+            print(
+                f"[!] [Client {number}] [ERROR segment {last_segment}]  ACK response error: {str(e)}"
+            )
 
         vars["first_segment"] = first_segment
         vars["last_segment"] = last_segment
@@ -290,16 +286,19 @@ if __name__ == "__main__":
         "-b", "--broadcastport", default=8080, type=int, help="Port of server"
     )
     parser.add_argument(
-        "-f", "--pathfile", default="server_files/git.exe", help="Path file input"
+        "-f",
+        "--pathfile",
+        default="server_files/git.exe",
+        type=str,
+        help="Path file input",
     )
     args = parser.parse_args()
 
     main = Server("127.0.0.1", args.broadcastport)
 
     print(f"[!] Server started at localhost:{args.broadcastport}")
-    sourcefile = "server_files/git.exe"
-    file = os.stat(sourcefile)
-    print(f"[!] Source File | {os.path.basename(sourcefile)} | {file.st_size} bytes")
+    file = os.stat(args.pathfile)
+    print(f"[!] Source File | {os.path.basename(args.pathfile)} | {file.st_size} bytes")
 
     main.listen_for_clients()
     main.start_file_transfer(args.pathfile)
