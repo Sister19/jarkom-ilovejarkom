@@ -198,6 +198,7 @@ class Server:
                 t1.join()
                 t2.join()
                 first_segment = vars["first_segment"]
+                print(first_segment)
                 last_segment = vars["last_segment"]
         
         try:
@@ -249,7 +250,6 @@ class Server:
             self.conn.send_data(segments[last_segment], client_addr)
             print(f"[!] [Client {number}] [Num={last_segment+1}] Sent")
             last_segment += 1
-        vars["first_segment"] = first_segment
         vars["last_segment"] = last_segment
 
     def __receive_data_parallel(self,number,vars) :
