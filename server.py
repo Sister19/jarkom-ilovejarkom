@@ -87,7 +87,7 @@ class Server:
             if not self.three_way_handshake(client.address):
                 print("[!] Handshake failed, proceed to the next client.")
                 continue
-            print(f"[Client {i}] Initiating file transfer...")
+            print(f"[!] [Client {i}] Initiating file transfer...")
             thread = threading.Thread(target=self.file_transfer, args=(segments, client.address,i,filename,))
             threads.append(thread)
             if not (parallel):
