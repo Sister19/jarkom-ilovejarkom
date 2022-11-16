@@ -15,20 +15,27 @@ class ClientStatus:
 
 
 class Server:
-    def __init__(self, ip: str, port: int):
+    def __init__(self, ip: str, port: int, clients_parallel = True, data_parallel = True):
         # Init server
         self.ip = ip
         self.port = port
         self.conn = Connection(ip, port)
         self.clients = {}
+        self.clients_parallel = clients_parallel
+        self.data_parallel = data_parallel
 
-    def listen_for_clients(self):
-        # Waiting client for connect
-        try:
-            ans = "y"
-            print("[!] Listening to broadcast address for clients.\n")
-            while ans.lower() == "y":
-                data, address = self.conn.listen_single_segment(60)
+    def __listen_client_parallel(self, vars, queue):
+        while (not vars["finished"]):
+            try:
+                data, addr = self.conn.listen_single_segment(1)
+                queue.append(addr)
+            except Exception as e:
+                pass
+
+    def __receive_client_parallel(self, vars, queue):
+        while (not vars["finished"]):
+            if len(queue) > 0:
+                address = queue.pop(0)
                 addr = f"{address[0]}:{address[1]}"
                 if addr not in self.clients:
                     self.clients[addr] = ClientStatus(
@@ -38,6 +45,49 @@ class Server:
                 else:
                     print(f"[!] Client {addr} has previously connected.")
                 ans = input("[?] Listen more? (y/n) ")
+                if ans.lower() != "y":
+                    vars["finished"] = True
+
+    def listen_for_clients(self):
+        # Waiting client for connect
+        try:
+            if not self.clients_parallel:
+                ans = "y"
+                print("[!] Listening to broadcast address for clients.\n")
+                while ans.lower() == "y":
+                    data, address = self.conn.listen_single_segment(60)
+                    addr = f"{address[0]}:{address[1]}"
+                    if addr not in self.clients:
+                        self.clients[addr] = ClientStatus(
+                            address=(address[0], address[1]), last_ack=0, fin=False
+                        )
+                        print(f"[!] Received request from {addr}")
+                    else:
+                        print(f"[!] Client {addr} has previously connected.")
+                    ans = input("[?] Listen more? (y/n) ")
+            else:
+                print("[!] Listening to broadcast address for clients.\n")
+                var = {"finished" : False}
+                queue = []
+                t1 = threading.Thread(
+                    target=self.__listen_client_parallel,
+                    args=(
+                        var,
+                        queue,
+                    ),
+                )
+                t2 = threading.Thread(
+                    target=self.__receive_client_parallel,
+                    args=(
+                        var,
+                        queue,
+                    ),
+                )
+
+                t1.start()
+                t2.start()
+                t1.join()
+                t2.join()
 
             print("\nClient list:")
             number = 1
@@ -75,7 +125,7 @@ class Server:
         return True
 
     # PARALELL INI UNTUK MENGAKTIFKAN FITURNYA
-    def start_file_transfer(self, filename: str, parallel=True):
+    def start_file_transfer(self, filename: str):
         # Handshake & file transfer for all client
 
         file = self.__read_file_to_bytes(filename)
@@ -98,11 +148,11 @@ class Server:
                 ),
             )
             threads.append(thread)
-            if not (parallel):
+            if not (self.clients_parallel):
                 self.file_transfer(segments, client.address, i, filename)
             i += 1
 
-        if parallel:
+        if self.clients_parallel:
             for thread in threads:
                 thread.start()
             for thread in threads:
@@ -116,7 +166,6 @@ class Server:
         client_addr: tuple(("ip", "port")),
         number=1,
         filename="",
-        parallel=True,
     ):
 
         # Go-Back-N Protocol
@@ -144,7 +193,7 @@ class Server:
 
         # SEND SEGMENTS
         # NON PARALLEL VERSION :
-        if not parallel:
+        if not self.data_parallel:
             while first_segment < n:
                 if (last_segment - first_segment) < window_size and last_segment < n:
                     self.conn.send_data(segments[last_segment], client_addr)
@@ -169,7 +218,7 @@ class Server:
                     except Exception as e:
                         last_segment = first_segment
                         print(
-                            f"[!] [Client {number}] [ERROR segment {first_segment}+1] ACK response error: {str(e)}"
+                            f"[!] [Client {number}] [ERROR segment {first_segment+1}] ACK response error: {str(e)}"
                         )
 
         # PARALLEL VERSION:
@@ -309,9 +358,17 @@ if __name__ == "__main__":
         type=str,
         help="Path file input",
     )
+    parser.add_argument(
+        "-cp", "--clientparallel", default=False, action='store_true', help="Parallel for listening and sending to multiclients"
+    )
+
+    parser.add_argument(
+        "-tp", "--transferparallel", default=False, action='store_true', help="Parralel for sending data to each client"
+    )
     args = parser.parse_args()
 
-    main = Server("127.0.0.1", args.broadcastport)
+    main = Server("127.0.0.1", args.broadcastport, args.clientparallel, args.transferparallel)
+    # print(args.clientparallel, args.transferparallel)
 
     print(f"[!] Server started at localhost:{args.broadcastport}")
     file = os.stat(args.pathfile)
