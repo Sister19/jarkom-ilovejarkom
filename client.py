@@ -129,7 +129,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main = Client("127.0.0.1", args.clientport)
-    print(f"Client started at localhost:{args.clientport}")
+    print(f"[!] Client started at localhost:{args.clientport}")
 
     main.three_way_handshake(("127.0.0.1", args.broadcastport))
     main.listen_file_transfer(("127.0.0.1", args.broadcastport),args.pathfile)

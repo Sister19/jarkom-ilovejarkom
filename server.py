@@ -13,7 +13,6 @@ class ClientStatus:
     last_ack: int
     fin: bool
 
-
 class Server:
     def __init__(self, ip: str, port: int, clients_parallel = True, data_parallel = True):
         # Init server
@@ -129,7 +128,6 @@ class Server:
             print(e)
         return True
 
-    # PARALELL INI UNTUK MENGAKTIFKAN FITURNYA
     def start_file_transfer(self, filename: str):
         # Handshake & file transfer for all client
 
@@ -180,7 +178,7 @@ class Server:
         first_segment = 0
         last_segment = 0
         n = len(segments)
-        window_size = min(n, 2)
+        window_size = min(n, 3)
 
         # SEND METADATA
         ack_metadata = False
