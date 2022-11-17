@@ -38,9 +38,9 @@ python client.py -c [client port] -b [broadcast port] -f [path output]
 2. -c : Diisi port untuk client server. Defaultnya adalah 3000.
 3. -f : Diisi path menuju file dari root repository. Untuk server, defaultnya adalah server_files/git.exe
 4. -cp : Merupakan flag tanpa parameter yang digunakan untuk mengaktifkan **BONUS** Paralelisasi pada program server. Defaultnya adalah False.
-5. -tp : Merupakan flag tanpa parameter yang digunakan untuk mengoptimasi pengiriman dengan threads (memisahkan listening dan sending data agar concurrent). Kinerja program lebih baik dengan flag ini. Defaultnya adalah false.
+5. -tp : Merupakan flag tanpa parameter yang digunakan untuk mengoptimasi pengiriman dengan threads (memisahkan listening dan sending data agar concurrent). Defaultnya adalah false.
 
-**NOTE**: Apabila flag -f tidak diisi, maka program akan secara otomatis memberikan name file tersebut dengan nama dan extension aslinya melalui Bonus Metadata.
+**NOTE**: Apabila flag -f tidak diisi, maka program akan secara otomatis memberikan name file tersebut dengan nama dan extension aslinya melalui Bonus Metadata. **Disarankan** untuk hanya menggunakan salah satu dari flag -cp atau -tp untuk sekali menjalankan programnya.
 
 ## Alur Program
 Setelah menjalankan server akan keluar output sebagai berikut:
