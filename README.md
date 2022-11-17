@@ -6,7 +6,7 @@ NIM      | Nama
 ---      | ----
 13520094 | Saul Sayers
 13520115 | Maria Khelli
-13520151 | Rizky Ramadhana Putra Kusuma
+13520151 | Rizky Ramadhana Putra Kusnaryanto
 
 ## Spesifikasi Tugas
 Anda diminta untuk membuat sistem program yang terdiri dari server dan client yang berkomunikasi lewat jaringan. Program **wajib** ditulis dalam **Python 3**.
