@@ -36,9 +36,11 @@ python client.py -c [client port] -b [broadcast port] -f [path output]
 **Keterangan Flags**:
 1. -b : Diisi port untuk broadcast server. Defaultnya adalah 8080.
 2. -c : Diisi port untuk client server. Defaultnya adalah 3000.
-3. -f : Diisi path menuju file dari root repository. Untuk server, defaultnya adalah server_files/git.exe sementara untuk client defaultnya adalah result.txt
+3. -f : Diisi path menuju file dari root repository. Untuk server, defaultnya adalah server_files/git.exe
 4. -cp : Merupakan flag tanpa parameter yang digunakan untuk mengaktifkan **BONUS** Paralelisasi pada program server. Defaultnya adalah False.
 5. -tp : Merupakan flag tanpa parameter yang digunakan untuk mengoptimasi pengiriman dengan threads (memisahkan listening dan sending data agar concurrent). Kinerja program lebih baik dengan flag ini. Defaultnya adalah false.
+
+**NOTE**: Apabila flag -f tidak diisi, maka program akan secara otomatis memberikan name file tersebut dengan nama dan extension aslinya melalui Bonus Metadata.
 
 ## Alur Program
 Setelah menjalankan server akan keluar output sebagai berikut:
@@ -61,7 +63,9 @@ Server akan mengeluarkan prompt sebagai berikut:
 ```
 
 Apabila memberikan input y, maka program akan menunggu mendengarkan inisiasi handshake dari client lain. Apabila memberikan input N, maka program akan segera membalas pesan Syn untuk tiap clientnya. 
+
 **NOTE**: Dengan flag -cp, maka client baru tidak perlu menunggu server memberikan input y. Client - client baru dapat muncul bersamaan dan terdeteksi oleh server kemudian dimasukkan queue, sehingga tidak perlu sekuensial client1 - y - client2 - y - client3 - n dsb.
+
 
 Berikut adalah output dari server dan client saat melakukan inisiasi transfer file:
 ```
