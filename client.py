@@ -32,11 +32,14 @@ class Client:
 
         return True
 
-    def listen_file_transfer(self, server_addr: tuple(("ip", "port"))):
+    def listen_file_transfer(self, server_addr: tuple(("ip", "port")), pathfile=None):
         # File transfer, client-side
         filebody = b""
         segment_num = 1
-        filepath = "client_files/result.txt"  # DEFAULT
+        if pathfile is None: 
+            filepath = "client_files/result.txt"  # Handle metadata ga kekirim DAN pathfile gadikasih
+        else :
+            filepath = pathfile
 
         # RECEIVE METADATA
         try:
@@ -50,7 +53,8 @@ class Client:
                 f"[!] [Client] [Metadata] Filename: {filename_arr[0]} | Extension: .{filename_arr[1]}"
             )
 
-            filepath = "client_files/" + filename
+            if pathfile is None: 
+                filepath = "client_files/" + filename #metadata dipake kalau gaada dikasih nama aja
 
             self.conn.send_data(
                 Segment().build(
@@ -66,7 +70,7 @@ class Client:
         # RECEIVE PAYLOAD
         while True:
             try:
-                data, server_addr = self.conn.listen_single_segment(5)
+                data, server_addr = self.conn.listen_single_segment(10)
                 seg = Segment().build_from_bytes(bytes_data=data)
                 if seg.get_header().flag.value == FIN_FLAG:
                     head = SegmentHeader(seq_num=0, ack_num=0, flag=[ACK_FLAG])
@@ -75,7 +79,7 @@ class Client:
                     )
                     self.conn.close_socket()
                     break
-                elif segment_num == seg.seq_num:
+                elif segment_num >=  seg.seq_num :
                     print(f"[!] [Client] [Num={seg.seq_num}] Received Segment")
                     self.conn.send_data(
                         Segment().build(
@@ -86,8 +90,9 @@ class Client:
                         ),
                         server_addr,
                     )
-                    segment_num += 1
-                    filebody += seg.payload
+                    if segment_num == seg.seq_num :
+                        segment_num += 1
+                        filebody += seg.payload
             except Exception as e:
                 # kalau checksum gagal ato timeout
                 print(e)
@@ -113,7 +118,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "-c", "--clientport", default=3000, type=int, help="Port of client"
     )
-    parser.add_argument("-f", "--filepath", default="result", help="Port of client")
+    parser.add_argument(
+        "-f",
+        "--pathfile",
+        default=None,
+        type=str,
+        help="Path file input",
+    )
 
     args = parser.parse_args()
 
@@ -121,4 +132,4 @@ if __name__ == "__main__":
     print(f"Client started at localhost:{args.clientport}")
 
     main.three_way_handshake(("127.0.0.1", args.broadcastport))
-    main.listen_file_transfer(("127.0.0.1", args.broadcastport))
+    main.listen_file_transfer(("127.0.0.1", args.broadcastport),args.pathfile)

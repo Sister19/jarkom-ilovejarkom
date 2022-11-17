@@ -27,8 +27,8 @@ class Connection:
                 if data:
                     seg = Segment()
                     seg.set_from_bytes(data)
-                    if not (seg.valid_checksum):
-                        raise ValueError("Checksum tidak sama!")
+                    if not (seg.valid_checksum()):
+                        raise ValueError("Checksum is not valid!")
                     break
 
             return data, address

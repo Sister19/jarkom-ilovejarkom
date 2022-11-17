@@ -1,0 +1,1879 @@
+[!] Server started at localhost:8080
+[!] Source File | test.jpg | 7683155 bytes
+[!] Listening to broadcast address for clients.
+
+[!] Received request from 127.0.0.1:3000
+[?] Listen more? (y/n) [!] Received request from 127.0.0.1:3010
+[?] Listen more? (y/n) 
+Client list:
+1. 127.0.0.1:3000
+2. 127.0.0.1:3010
+
+[!] Commencing file transfer...
+[!] [Handshake] Handshake to client 1...
+[!] [Handshake] Sending SYN ACK to client
+[!] [Handshake] Received ACK from client, handshake success!
+[!] [Client 1] Initiating file transfer...
+[!] [Client 1] [Metadata] Sent
+timed out
+[!] [Client 1] [Metadata] Sent
+timed out
+[!] [Client 1] [Metadata] Sent
+[!] [Client 1] [Metadata] [ACK] Segment acked
+[!] [Client 1] [Num=1] Sent
+[!] [Client 1] [Num=2] Sent
+[!] [Client 1] [ERROR segment 1] ACK response error: timed out
+[!] [Client 1] [Num=1] Sent
+[!] [Client 1] [Num=2] Sent
+[!] [Client 1] [Num=2] [ACK] Ack is not valid
+accepted : 2, expected : 1
+[!] [Client 1] [Num=1] Sent
+[!] [Client 1] [Num=2] Sent
+[!] [Client 1] [Num=1] [ACK] Segment acked
+[!] [Client 1] [Num=3] Sent
+[!] [Client 1] [Num=3] [ACK] Ack is not valid
+accepted : 3, expected : 2
+[!] [Client 1] [Num=2] Sent
+[!] [Client 1] [Num=3] Sent
+[!] [Client 1] [Num=3] [ACK] Ack is not valid
+accepted : 3, expected : 2
+[!] [Client 1] [Num=2] Sent
+[!] [Client 1] [Num=3] Sent
+[!] [Client 1] [Num=2] [ACK] Segment acked
+[!] [Client 1] [Num=4] Sent
+[!] [Client 1] [Num=4] [ACK] Ack is not valid
+accepted : 4, expected : 3
+[!] [Client 1] [Num=3] Sent
+[!] [Client 1] [Num=4] Sent
+[!] [Client 1] [Num=3] [ACK] Segment acked
+[!] [Client 1] [Num=5] Sent
+[!] [Client 1] [Num=4] [ACK] Segment acked
+[!] [Client 1] [Num=6] Sent
+[!] [Client 1] [Num=5] [ACK] Segment acked
+[!] [Client 1] [Num=7] Sent
+[!] [Client 1] [Num=6] [ACK] Segment acked
+[!] [Client 1] [Num=8] Sent
+[!] [Client 1] [Num=7] [ACK] Segment acked
+[!] [Client 1] [Num=9] Sent
+[!] [Client 1] [Num=8] [ACK] Segment acked
+[!] [Client 1] [Num=10] Sent
+[!] [Client 1] [Num=9] [ACK] Segment acked
+[!] [Client 1] [Num=11] Sent
+[!] [Client 1] [Num=10] [ACK] Segment acked
+[!] [Client 1] [Num=12] Sent
+[!] [Client 1] [Num=11] [ACK] Segment acked
+[!] [Client 1] [Num=13] Sent
+[!] [Client 1] [Num=12] [ACK] Segment acked
+[!] [Client 1] [Num=14] Sent
+[!] [Client 1] [Num=13] [ACK] Segment acked
+[!] [Client 1] [Num=15] Sent
+[!] [Client 1] [ERROR segment 14] ACK response error: timed out
+[!] [Client 1] [Num=14] Sent
+[!] [Client 1] [Num=15] Sent
+[!] [Client 1] [ERROR segment 14] ACK response error: timed out
+[!] [Client 1] [Num=14] Sent
+[!] [Client 1] [Num=15] Sent
+[!] [Client 1] [Num=14] [ACK] Segment acked
+[!] [Client 1] [Num=16] Sent
+[!] [Client 1] [Num=15] [ACK] Segment acked
+[!] [Client 1] [Num=17] Sent
+[!] [Client 1] [Num=16] [ACK] Segment acked
+[!] [Client 1] [Num=18] Sent
+[!] [Client 1] [Num=17] [ACK] Segment acked
+[!] [Client 1] [Num=19] Sent
+[!] [Client 1] [ERROR segment 18] ACK response error: timed out
+[!] [Client 1] [Num=18] Sent
+[!] [Client 1] [Num=19] Sent
+[!] [Client 1] [Num=18] [ACK] Segment acked
+[!] [Client 1] [Num=20] Sent
+[!] [Client 1] [ERROR segment 19] ACK response error: timed out
+[!] [Client 1] [Num=19] Sent
+[!] [Client 1] [Num=20] Sent
+[!] [Client 1] [Num=19] [ACK] Segment acked
+[!] [Client 1] [Num=21] Sent
+[!] [Client 1] [ERROR segment 20] ACK response error: timed out
+[!] [Client 1] [Num=20] Sent
+[!] [Client 1] [Num=21] Sent
+[!] [Client 1] [Num=20] [ACK] Segment acked
+[!] [Client 1] [Num=22] Sent
+[!] [Client 1] [Num=21] [ACK] Segment acked
+[!] [Client 1] [Num=23] Sent
+[!] [Client 1] [Num=22] [ACK] Segment acked
+[!] [Client 1] [Num=24] Sent
+[!] [Client 1] [Num=23] [ACK] Segment acked
+[!] [Client 1] [Num=25] Sent
+[!] [Client 1] [ERROR segment 24] ACK response error: timed out
+[!] [Client 1] [Num=24] Sent
+[!] [Client 1] [Num=25] Sent
+[!] [Client 1] [Num=24] [ACK] Segment acked
+[!] [Client 1] [Num=26] Sent
+[!] [Client 1] [Num=25] [ACK] Segment acked
+[!] [Client 1] [Num=27] Sent
+[!] [Client 1] [Num=27] [ACK] Ack is not valid
+accepted : 27, expected : 26
+[!] [Client 1] [Num=26] Sent
+[!] [Client 1] [Num=27] Sent
+[!] [Client 1] [Num=26] [ACK] Segment acked
+[!] [Client 1] [Num=28] Sent
+[!] [Client 1] [Num=27] [ACK] Segment acked
+[!] [Client 1] [Num=29] Sent
+[!] [Client 1] [Num=28] [ACK] Segment acked
+[!] [Client 1] [Num=30] Sent
+[!] [Client 1] [ERROR segment 29] ACK response error: timed out
+[!] [Client 1] [Num=29] Sent
+[!] [Client 1] [Num=30] Sent
+[!] [Client 1] [Num=29] [ACK] Segment acked
+[!] [Client 1] [Num=31] Sent
+[!] [Client 1] [ERROR segment 30] ACK response error: timed out
+[!] [Client 1] [Num=30] Sent
+[!] [Client 1] [Num=31] Sent
+[!] [Client 1] [Num=30] [ACK] Segment acked
+[!] [Client 1] [Num=32] Sent
+[!] [Client 1] [ERROR segment 31] ACK response error: timed out
+[!] [Client 1] [Num=31] Sent
+[!] [Client 1] [Num=32] Sent
+[!] [Client 1] [Num=31] [ACK] Segment acked
+[!] [Client 1] [Num=33] Sent
+[!] [Client 1] [ERROR segment 32] ACK response error: timed out
+[!] [Client 1] [Num=32] Sent
+[!] [Client 1] [Num=33] Sent
+[!] [Client 1] [Num=32] [ACK] Segment acked
+[!] [Client 1] [Num=34] Sent
+[!] [Client 1] [ERROR segment 33] ACK response error: timed out
+[!] [Client 1] [Num=33] Sent
+[!] [Client 1] [Num=34] Sent
+[!] [Client 1] [Num=34] [ACK] Ack is not valid
+accepted : 34, expected : 33
+[!] [Client 1] [Num=33] Sent
+[!] [Client 1] [Num=34] Sent
+[!] [Client 1] [Num=34] [ACK] Ack is not valid
+accepted : 34, expected : 33
+[!] [Client 1] [Num=33] Sent
+[!] [Client 1] [Num=34] Sent
+[!] [Client 1] [Num=34] [ACK] Ack is not valid
+accepted : 34, expected : 33
+[!] [Client 1] [Num=33] Sent
+[!] [Client 1] [Num=34] Sent
+[!] [Client 1] [Num=33] [ACK] Segment acked
+[!] [Client 1] [Num=35] Sent
+[!] [Client 1] [Num=34] [ACK] Segment acked
+[!] [Client 1] [Num=36] Sent
+[!] [Client 1] [Num=35] [ACK] Segment acked
+[!] [Client 1] [Num=37] Sent
+[!] [Client 1] [ERROR segment 36] ACK response error: timed out
+[!] [Client 1] [Num=36] Sent
+[!] [Client 1] [Num=37] Sent
+[!] [Client 1] [Num=37] [ACK] Ack is not valid
+accepted : 37, expected : 36
+[!] [Client 1] [Num=36] Sent
+[!] [Client 1] [Num=37] Sent
+[!] [Client 1] [Num=36] [ACK] Segment acked
+[!] [Client 1] [Num=38] Sent
+[!] [Client 1] [Num=37] [ACK] Segment acked
+[!] [Client 1] [Num=39] Sent
+[!] [Client 1] [Num=38] [ACK] Segment acked
+[!] [Client 1] [Num=40] Sent
+[!] [Client 1] [Num=39] [ACK] Segment acked
+[!] [Client 1] [Num=41] Sent
+[!] [Client 1] [Num=41] [ACK] Ack is not valid
+accepted : 41, expected : 40
+[!] [Client 1] [Num=40] Sent
+[!] [Client 1] [Num=41] Sent
+[!] [Client 1] [Num=40] [ACK] Segment acked
+[!] [Client 1] [Num=42] Sent
+[!] [Client 1] [Num=42] [ACK] Ack is not valid
+accepted : 42, expected : 41
+[!] [Client 1] [Num=41] Sent
+[!] [Client 1] [Num=42] Sent
+[!] [Client 1] [Num=41] [ACK] Segment acked
+[!] [Client 1] [Num=43] Sent
+[!] [Client 1] [ERROR segment 42] ACK response error: timed out
+[!] [Client 1] [Num=42] Sent
+[!] [Client 1] [Num=43] Sent
+[!] [Client 1] [Num=42] [ACK] Segment acked
+[!] [Client 1] [Num=44] Sent
+[!] [Client 1] [ERROR segment 43] ACK response error: timed out
+[!] [Client 1] [Num=43] Sent
+[!] [Client 1] [Num=44] Sent
+[!] [Client 1] [Num=43] [ACK] Segment acked
+[!] [Client 1] [Num=45] Sent
+[!] [Client 1] [ERROR segment 44] ACK response error: timed out
+[!] [Client 1] [Num=44] Sent
+[!] [Client 1] [Num=45] Sent
+[!] [Client 1] [Num=45] [ACK] Ack is not valid
+accepted : 45, expected : 44
+[!] [Client 1] [Num=44] Sent
+[!] [Client 1] [Num=45] Sent
+[!] [Client 1] [Num=44] [ACK] Segment acked
+[!] [Client 1] [Num=46] Sent
+[!] [Client 1] [Num=45] [ACK] Segment acked
+[!] [Client 1] [Num=47] Sent
+[!] [Client 1] [Num=46] [ACK] Segment acked
+[!] [Client 1] [Num=48] Sent
+[!] [Client 1] [Num=47] [ACK] Segment acked
+[!] [Client 1] [Num=49] Sent
+[!] [Client 1] [Num=48] [ACK] Segment acked
+[!] [Client 1] [Num=50] Sent
+[!] [Client 1] [Num=49] [ACK] Segment acked
+[!] [Client 1] [Num=51] Sent
+[!] [Client 1] [ERROR segment 50] ACK response error: timed out
+[!] [Client 1] [Num=50] Sent
+[!] [Client 1] [Num=51] Sent
+[!] [Client 1] [Num=50] [ACK] Segment acked
+[!] [Client 1] [Num=52] Sent
+[!] [Client 1] [ERROR segment 51] ACK response error: timed out
+[!] [Client 1] [Num=51] Sent
+[!] [Client 1] [Num=52] Sent
+[!] [Client 1] [Num=51] [ACK] Segment acked
+[!] [Client 1] [Num=53] Sent
+[!] [Client 1] [ERROR segment 52] ACK response error: timed out
+[!] [Client 1] [Num=52] Sent
+[!] [Client 1] [Num=53] Sent
+[!] [Client 1] [Num=52] [ACK] Segment acked
+[!] [Client 1] [Num=54] Sent
+[!] [Client 1] [Num=53] [ACK] Segment acked
+[!] [Client 1] [Num=55] Sent
+[!] [Client 1] [Num=54] [ACK] Segment acked
+[!] [Client 1] [Num=56] Sent
+[!] [Client 1] [Num=55] [ACK] Segment acked
+[!] [Client 1] [Num=57] Sent
+[!] [Client 1] [Num=56] [ACK] Segment acked
+[!] [Client 1] [Num=58] Sent
+[!] [Client 1] [ERROR segment 57] ACK response error: timed out
+[!] [Client 1] [Num=57] Sent
+[!] [Client 1] [Num=58] Sent
+[!] [Client 1] [Num=57] [ACK] Segment acked
+[!] [Client 1] [Num=59] Sent
+[!] [Client 1] [Num=58] [ACK] Segment acked
+[!] [Client 1] [Num=60] Sent
+[!] [Client 1] [Num=59] [ACK] Segment acked
+[!] [Client 1] [Num=61] Sent
+[!] [Client 1] [Num=60] [ACK] Segment acked
+[!] [Client 1] [Num=62] Sent
+[!] [Client 1] [Num=62] [ACK] Ack is not valid
+accepted : 62, expected : 61
+[!] [Client 1] [Num=61] Sent
+[!] [Client 1] [Num=62] Sent
+[!] [Client 1] [Num=61] [ACK] Segment acked
+[!] [Client 1] [Num=63] Sent
+[!] [Client 1] [Num=62] [ACK] Segment acked
+[!] [Client 1] [Num=64] Sent
+[!] [Client 1] [Num=63] [ACK] Segment acked
+[!] [Client 1] [Num=65] Sent
+[!] [Client 1] [ERROR segment 64] ACK response error: timed out
+[!] [Client 1] [Num=64] Sent
+[!] [Client 1] [Num=65] Sent
+[!] [Client 1] [Num=65] [ACK] Ack is not valid
+accepted : 65, expected : 64
+[!] [Client 1] [Num=64] Sent
+[!] [Client 1] [Num=65] Sent
+[!] [Client 1] [Num=64] [ACK] Segment acked
+[!] [Client 1] [Num=66] Sent
+[!] [Client 1] [Num=66] [ACK] Ack is not valid
+accepted : 66, expected : 65
+[!] [Client 1] [Num=65] Sent
+[!] [Client 1] [Num=66] Sent
+[!] [Client 1] [Num=65] [ACK] Segment acked
+[!] [Client 1] [Num=67] Sent
+[!] [Client 1] [Num=66] [ACK] Segment acked
+[!] [Client 1] [Num=68] Sent
+[!] [Client 1] [Num=67] [ACK] Segment acked
+[!] [Client 1] [Num=69] Sent
+[!] [Client 1] [Num=68] [ACK] Segment acked
+[!] [Client 1] [Num=70] Sent
+[!] [Client 1] [Num=69] [ACK] Segment acked
+[!] [Client 1] [Num=71] Sent
+[!] [Client 1] [Num=70] [ACK] Segment acked
+[!] [Client 1] [Num=72] Sent
+[!] [Client 1] [Num=71] [ACK] Segment acked
+[!] [Client 1] [Num=73] Sent
+[!] [Client 1] [ERROR segment 72] ACK response error: timed out
+[!] [Client 1] [Num=72] Sent
+[!] [Client 1] [Num=73] Sent
+[!] [Client 1] [ERROR segment 72] ACK response error: timed out
+[!] [Client 1] [Num=72] Sent
+[!] [Client 1] [Num=73] Sent
+[!] [Client 1] [Num=72] [ACK] Segment acked
+[!] [Client 1] [Num=74] Sent
+[!] [Client 1] [Num=73] [ACK] Segment acked
+[!] [Client 1] [Num=75] Sent
+[!] [Client 1] [Num=74] [ACK] Segment acked
+[!] [Client 1] [Num=76] Sent
+[!] [Client 1] [Num=76] [ACK] Ack is not valid
+accepted : 76, expected : 75
+[!] [Client 1] [Num=75] Sent
+[!] [Client 1] [Num=76] Sent
+[!] [Client 1] [Num=76] [ACK] Ack is not valid
+accepted : 76, expected : 75
+[!] [Client 1] [Num=75] Sent
+[!] [Client 1] [Num=76] Sent
+[!] [Client 1] [Num=75] [ACK] Segment acked
+[!] [Client 1] [Num=77] Sent
+[!] [Client 1] [Num=76] [ACK] Segment acked
+[!] [Client 1] [Num=78] Sent
+[!] [Client 1] [Num=77] [ACK] Segment acked
+[!] [Client 1] [Num=79] Sent
+[!] [Client 1] [Num=78] [ACK] Segment acked
+[!] [Client 1] [Num=80] Sent
+[!] [Client 1] [ERROR segment 79] ACK response error: timed out
+[!] [Client 1] [Num=79] Sent
+[!] [Client 1] [Num=80] Sent
+[!] [Client 1] [Num=79] [ACK] Segment acked
+[!] [Client 1] [Num=81] Sent
+[!] [Client 1] [Num=80] [ACK] Segment acked
+[!] [Client 1] [Num=82] Sent
+[!] [Client 1] [Num=81] [ACK] Segment acked
+[!] [Client 1] [Num=83] Sent
+[!] [Client 1] [Num=83] [ACK] Ack is not valid
+accepted : 83, expected : 82
+[!] [Client 1] [Num=82] Sent
+[!] [Client 1] [Num=83] Sent
+[!] [Client 1] [Num=82] [ACK] Segment acked
+[!] [Client 1] [Num=84] Sent
+[!] [Client 1] [Num=83] [ACK] Segment acked
+[!] [Client 1] [Num=85] Sent
+[!] [Client 1] [Num=84] [ACK] Segment acked
+[!] [Client 1] [Num=86] Sent
+[!] [Client 1] [Num=85] [ACK] Segment acked
+[!] [Client 1] [Num=87] Sent
+[!] [Client 1] [Num=86] [ACK] Segment acked
+[!] [Client 1] [Num=88] Sent
+[!] [Client 1] [ERROR segment 87] ACK response error: timed out
+[!] [Client 1] [Num=87] Sent
+[!] [Client 1] [Num=88] Sent
+[!] [Client 1] [Num=88] [ACK] Ack is not valid
+accepted : 88, expected : 87
+[!] [Client 1] [Num=87] Sent
+[!] [Client 1] [Num=88] Sent
+[!] [Client 1] [Num=87] [ACK] Segment acked
+[!] [Client 1] [Num=89] Sent
+[!] [Client 1] [Num=88] [ACK] Segment acked
+[!] [Client 1] [Num=90] Sent
+[!] [Client 1] [Num=89] [ACK] Segment acked
+[!] [Client 1] [Num=91] Sent
+[!] [Client 1] [Num=90] [ACK] Segment acked
+[!] [Client 1] [Num=92] Sent
+[!] [Client 1] [ERROR segment 91] ACK response error: timed out
+[!] [Client 1] [Num=91] Sent
+[!] [Client 1] [Num=92] Sent
+[!] [Client 1] [Num=92] [ACK] Ack is not valid
+accepted : 92, expected : 91
+[!] [Client 1] [Num=91] Sent
+[!] [Client 1] [Num=92] Sent
+[!] [Client 1] [Num=91] [ACK] Segment acked
+[!] [Client 1] [Num=93] Sent
+[!] [Client 1] [Num=92] [ACK] Segment acked
+[!] [Client 1] [Num=94] Sent
+[!] [Client 1] [ERROR segment 93] ACK response error: timed out
+[!] [Client 1] [Num=93] Sent
+[!] [Client 1] [Num=94] Sent
+[!] [Client 1] [Num=93] [ACK] Segment acked
+[!] [Client 1] [Num=95] Sent
+[!] [Client 1] [Num=94] [ACK] Segment acked
+[!] [Client 1] [Num=96] Sent
+[!] [Client 1] [Num=95] [ACK] Segment acked
+[!] [Client 1] [Num=97] Sent
+[!] [Client 1] [Num=96] [ACK] Segment acked
+[!] [Client 1] [Num=98] Sent
+[!] [Client 1] [ERROR segment 97] ACK response error: timed out
+[!] [Client 1] [Num=97] Sent
+[!] [Client 1] [Num=98] Sent
+[!] [Client 1] [ERROR segment 97] ACK response error: timed out
+[!] [Client 1] [Num=97] Sent
+[!] [Client 1] [Num=98] Sent
+[!] [Client 1] [Num=97] [ACK] Segment acked
+[!] [Client 1] [Num=99] Sent
+[!] [Client 1] [Num=98] [ACK] Segment acked
+[!] [Client 1] [Num=100] Sent
+[!] [Client 1] [Num=99] [ACK] Segment acked
+[!] [Client 1] [Num=101] Sent
+[!] [Client 1] [ERROR segment 100] ACK response error: timed out
+[!] [Client 1] [Num=100] Sent
+[!] [Client 1] [Num=101] Sent
+[!] [Client 1] [ERROR segment 100] ACK response error: timed out
+[!] [Client 1] [Num=100] Sent
+[!] [Client 1] [Num=101] Sent
+[!] [Client 1] [Num=100] [ACK] Segment acked
+[!] [Client 1] [Num=102] Sent
+[!] [Client 1] [Num=101] [ACK] Segment acked
+[!] [Client 1] [Num=103] Sent
+[!] [Client 1] [ERROR segment 102] ACK response error: timed out
+[!] [Client 1] [Num=102] Sent
+[!] [Client 1] [Num=103] Sent
+[!] [Client 1] [Num=102] [ACK] Segment acked
+[!] [Client 1] [Num=104] Sent
+[!] [Client 1] [Num=103] [ACK] Segment acked
+[!] [Client 1] [Num=105] Sent
+[!] [Client 1] [Num=104] [ACK] Segment acked
+[!] [Client 1] [Num=106] Sent
+[!] [Client 1] [Num=106] [ACK] Ack is not valid
+accepted : 106, expected : 105
+[!] [Client 1] [Num=105] Sent
+[!] [Client 1] [Num=106] Sent
+[!] [Client 1] [Num=105] [ACK] Segment acked
+[!] [Client 1] [Num=107] Sent
+[!] [Client 1] [Num=106] [ACK] Segment acked
+[!] [Client 1] [Num=108] Sent
+[!] [Client 1] [ERROR segment 107] ACK response error: timed out
+[!] [Client 1] [Num=107] Sent
+[!] [Client 1] [Num=108] Sent
+[!] [Client 1] [Num=107] [ACK] Segment acked
+[!] [Client 1] [Num=109] Sent
+[!] [Client 1] [ERROR segment 108] ACK response error: timed out
+[!] [Client 1] [Num=108] Sent
+[!] [Client 1] [Num=109] Sent
+[!] [Client 1] [Num=108] [ACK] Segment acked
+[!] [Client 1] [Num=110] Sent
+[!] [Client 1] [ERROR segment 109] ACK response error: timed out
+[!] [Client 1] [Num=109] Sent
+[!] [Client 1] [Num=110] Sent
+[!] [Client 1] [Num=109] [ACK] Segment acked
+[!] [Client 1] [Num=111] Sent
+[!] [Client 1] [ERROR segment 110] ACK response error: timed out
+[!] [Client 1] [Num=110] Sent
+[!] [Client 1] [Num=111] Sent
+[!] [Client 1] [ERROR segment 110] ACK response error: timed out
+[!] [Client 1] [Num=110] Sent
+[!] [Client 1] [Num=111] Sent
+[!] [Client 1] [ERROR segment 110] ACK response error: timed out
+[!] [Client 1] [Num=110] Sent
+[!] [Client 1] [Num=111] Sent
+[!] [Client 1] [Num=110] [ACK] Segment acked
+[!] [Client 1] [Num=112] Sent
+[!] [Client 1] [Num=112] [ACK] Ack is not valid
+accepted : 112, expected : 111
+[!] [Client 1] [Num=111] Sent
+[!] [Client 1] [Num=112] Sent
+[!] [Client 1] [Num=111] [ACK] Segment acked
+[!] [Client 1] [Num=113] Sent
+[!] [Client 1] [Num=112] [ACK] Segment acked
+[!] [Client 1] [Num=114] Sent
+[!] [Client 1] [Num=114] [ACK] Ack is not valid
+accepted : 114, expected : 113
+[!] [Client 1] [Num=113] Sent
+[!] [Client 1] [Num=114] Sent
+[!] [Client 1] [Num=114] [ACK] Ack is not valid
+accepted : 114, expected : 113
+[!] [Client 1] [Num=113] Sent
+[!] [Client 1] [Num=114] Sent
+[!] [Client 1] [Num=113] [ACK] Segment acked
+[!] [Client 1] [Num=115] Sent
+[!] [Client 1] [Num=115] [ACK] Ack is not valid
+accepted : 115, expected : 114
+[!] [Client 1] [Num=114] Sent
+[!] [Client 1] [Num=115] Sent
+[!] [Client 1] [Num=114] [ACK] Segment acked
+[!] [Client 1] [Num=116] Sent
+[!] [Client 1] [Num=115] [ACK] Segment acked
+[!] [Client 1] [Num=117] Sent
+[!] [Client 1] [Num=116] [ACK] Segment acked
+[!] [Client 1] [Num=118] Sent
+[!] [Client 1] [ERROR segment 117] ACK response error: timed out
+[!] [Client 1] [Num=117] Sent
+[!] [Client 1] [Num=118] Sent
+[!] [Client 1] [Num=117] [ACK] Segment acked
+[!] [Client 1] [Num=119] Sent
+[!] [Client 1] [ERROR segment 118] ACK response error: timed out
+[!] [Client 1] [Num=118] Sent
+[!] [Client 1] [Num=119] Sent
+[!] [Client 1] [Num=118] [ACK] Segment acked
+[!] [Client 1] [Num=120] Sent
+[!] [Client 1] [ERROR segment 119] ACK response error: timed out
+[!] [Client 1] [Num=119] Sent
+[!] [Client 1] [Num=120] Sent
+[!] [Client 1] [Num=119] [ACK] Segment acked
+[!] [Client 1] [Num=121] Sent
+[!] [Client 1] [ERROR segment 120] ACK response error: timed out
+[!] [Client 1] [Num=120] Sent
+[!] [Client 1] [Num=121] Sent
+[!] [Client 1] [Num=121] [ACK] Ack is not valid
+accepted : 121, expected : 120
+[!] [Client 1] [Num=120] Sent
+[!] [Client 1] [Num=121] Sent
+[!] [Client 1] [Num=120] [ACK] Segment acked
+[!] [Client 1] [Num=122] Sent
+[!] [Client 1] [Num=121] [ACK] Segment acked
+[!] [Client 1] [Num=123] Sent
+[!] [Client 1] [Num=123] [ACK] Ack is not valid
+accepted : 123, expected : 122
+[!] [Client 1] [Num=122] Sent
+[!] [Client 1] [Num=123] Sent
+[!] [Client 1] [ERROR segment 122] ACK response error: timed out
+[!] [Client 1] [Num=122] Sent
+[!] [Client 1] [Num=123] Sent
+[!] [Client 1] [Num=123] [ACK] Ack is not valid
+accepted : 123, expected : 122
+[!] [Client 1] [Num=122] Sent
+[!] [Client 1] [Num=123] Sent
+[!] [Client 1] [Num=122] [ACK] Segment acked
+[!] [Client 1] [Num=124] Sent
+[!] [Client 1] [Num=124] [ACK] Ack is not valid
+accepted : 124, expected : 123
+[!] [Client 1] [Num=123] Sent
+[!] [Client 1] [Num=124] Sent
+[!] [Client 1] [Num=124] [ACK] Ack is not valid
+accepted : 124, expected : 123
+[!] [Client 1] [Num=123] Sent
+[!] [Client 1] [Num=124] Sent
+[!] [Client 1] [Num=123] [ACK] Segment acked
+[!] [Client 1] [Num=125] Sent
+[!] [Client 1] [Num=124] [ACK] Segment acked
+[!] [Client 1] [Num=126] Sent
+[!] [Client 1] [Num=125] [ACK] Segment acked
+[!] [Client 1] [Num=127] Sent
+[!] [Client 1] [Num=126] [ACK] Segment acked
+[!] [Client 1] [Num=128] Sent
+[!] [Client 1] [ERROR segment 127] ACK response error: timed out
+[!] [Client 1] [Num=127] Sent
+[!] [Client 1] [Num=128] Sent
+[!] [Client 1] [Num=127] [ACK] Segment acked
+[!] [Client 1] [Num=129] Sent
+[!] [Client 1] [ERROR segment 128] ACK response error: timed out
+[!] [Client 1] [Num=128] Sent
+[!] [Client 1] [Num=129] Sent
+[!] [Client 1] [Num=128] [ACK] Segment acked
+[!] [Client 1] [Num=130] Sent
+[!] [Client 1] [Num=129] [ACK] Segment acked
+[!] [Client 1] [Num=131] Sent
+[!] [Client 1] [Num=130] [ACK] Segment acked
+[!] [Client 1] [Num=132] Sent
+[!] [Client 1] [Num=131] [ACK] Segment acked
+[!] [Client 1] [Num=133] Sent
+[!] [Client 1] [Num=132] [ACK] Segment acked
+[!] [Client 1] [Num=134] Sent
+[!] [Client 1] [Num=133] [ACK] Segment acked
+[!] [Client 1] [Num=135] Sent
+[!] [Client 1] [Num=134] [ACK] Segment acked
+[!] [Client 1] [Num=136] Sent
+[!] [Client 1] [ERROR segment 135] ACK response error: timed out
+[!] [Client 1] [Num=135] Sent
+[!] [Client 1] [Num=136] Sent
+[!] [Client 1] [Num=135] [ACK] Segment acked
+[!] [Client 1] [Num=137] Sent
+[!] [Client 1] [Num=136] [ACK] Segment acked
+[!] [Client 1] [Num=138] Sent
+[!] [Client 1] [Num=137] [ACK] Segment acked
+[!] [Client 1] [Num=139] Sent
+[!] [Client 1] [Num=138] [ACK] Segment acked
+[!] [Client 1] [Num=140] Sent
+[!] [Client 1] [Num=139] [ACK] Segment acked
+[!] [Client 1] [Num=141] Sent
+[!] [Client 1] [Num=140] [ACK] Segment acked
+[!] [Client 1] [Num=142] Sent
+[!] [Client 1] [Num=142] [ACK] Ack is not valid
+accepted : 142, expected : 141
+[!] [Client 1] [Num=141] Sent
+[!] [Client 1] [Num=142] Sent
+[!] [Client 1] [Num=141] [ACK] Segment acked
+[!] [Client 1] [Num=143] Sent
+[!] [Client 1] [Num=142] [ACK] Segment acked
+[!] [Client 1] [Num=144] Sent
+[!] [Client 1] [Num=143] [ACK] Segment acked
+[!] [Client 1] [Num=145] Sent
+[!] [Client 1] [Num=144] [ACK] Segment acked
+[!] [Client 1] [Num=146] Sent
+[!] [Client 1] [Num=145] [ACK] Segment acked
+[!] [Client 1] [Num=147] Sent
+[!] [Client 1] [Num=146] [ACK] Segment acked
+[!] [Client 1] [Num=148] Sent
+[!] [Client 1] [Num=147] [ACK] Segment acked
+[!] [Client 1] [Num=149] Sent
+[!] [Client 1] [Num=148] [ACK] Segment acked
+[!] [Client 1] [Num=150] Sent
+[!] [Client 1] [Num=149] [ACK] Segment acked
+[!] [Client 1] [Num=151] Sent
+[!] [Client 1] [ERROR segment 150] ACK response error: timed out
+[!] [Client 1] [Num=150] Sent
+[!] [Client 1] [Num=151] Sent
+[!] [Client 1] [ERROR segment 150] ACK response error: timed out
+[!] [Client 1] [Num=150] Sent
+[!] [Client 1] [Num=151] Sent
+[!] [Client 1] [Num=150] [ACK] Segment acked
+[!] [Client 1] [Num=152] Sent
+[!] [Client 1] [ERROR segment 151] ACK response error: timed out
+[!] [Client 1] [Num=151] Sent
+[!] [Client 1] [Num=152] Sent
+[!] [Client 1] [Num=151] [ACK] Segment acked
+[!] [Client 1] [Num=153] Sent
+[!] [Client 1] [Num=152] [ACK] Segment acked
+[!] [Client 1] [Num=154] Sent
+[!] [Client 1] [Num=154] [ACK] Ack is not valid
+accepted : 154, expected : 153
+[!] [Client 1] [Num=153] Sent
+[!] [Client 1] [Num=154] Sent
+[!] [Client 1] [Num=153] [ACK] Segment acked
+[!] [Client 1] [Num=155] Sent
+[!] [Client 1] [Num=155] [ACK] Ack is not valid
+accepted : 155, expected : 154
+[!] [Client 1] [Num=154] Sent
+[!] [Client 1] [Num=155] Sent
+[!] [Client 1] [Num=154] [ACK] Segment acked
+[!] [Client 1] [Num=156] Sent
+[!] [Client 1] [Num=155] [ACK] Segment acked
+[!] [Client 1] [Num=157] Sent
+[!] [Client 1] [Num=157] [ACK] Ack is not valid
+accepted : 157, expected : 156
+[!] [Client 1] [Num=156] Sent
+[!] [Client 1] [Num=157] Sent
+[!] [Client 1] [Num=157] [ACK] Ack is not valid
+accepted : 157, expected : 156
+[!] [Client 1] [Num=156] Sent
+[!] [Client 1] [Num=157] Sent
+[!] [Client 1] [Num=156] [ACK] Segment acked
+[!] [Client 1] [Num=158] Sent
+[!] [Client 1] [Num=157] [ACK] Segment acked
+[!] [Client 1] [Num=159] Sent
+[!] [Client 1] [Num=158] [ACK] Segment acked
+[!] [Client 1] [Num=160] Sent
+[!] [Client 1] [Num=159] [ACK] Segment acked
+[!] [Client 1] [Num=161] Sent
+[!] [Client 1] [Num=161] [ACK] Ack is not valid
+accepted : 161, expected : 160
+[!] [Client 1] [Num=160] Sent
+[!] [Client 1] [Num=161] Sent
+[!] [Client 1] [Num=160] [ACK] Segment acked
+[!] [Client 1] [Num=162] Sent
+[!] [Client 1] [Num=162] [ACK] Ack is not valid
+accepted : 162, expected : 161
+[!] [Client 1] [Num=161] Sent
+[!] [Client 1] [Num=162] Sent
+[!] [Client 1] [Num=162] [ACK] Ack is not valid
+accepted : 162, expected : 161
+[!] [Client 1] [Num=161] Sent
+[!] [Client 1] [Num=162] Sent
+[!] [Client 1] [Num=161] [ACK] Segment acked
+[!] [Client 1] [Num=163] Sent
+[!] [Client 1] [Num=162] [ACK] Segment acked
+[!] [Client 1] [Num=164] Sent
+[!] [Client 1] [ERROR segment 163] ACK response error: timed out
+[!] [Client 1] [Num=163] Sent
+[!] [Client 1] [Num=164] Sent
+[!] [Client 1] [Num=163] [ACK] Segment acked
+[!] [Client 1] [Num=165] Sent
+[!] [Client 1] [ERROR segment 164] ACK response error: timed out
+[!] [Client 1] [Num=164] Sent
+[!] [Client 1] [Num=165] Sent
+[!] [Client 1] [Num=164] [ACK] Segment acked
+[!] [Client 1] [Num=166] Sent
+[!] [Client 1] [ERROR segment 165] ACK response error: timed out
+[!] [Client 1] [Num=165] Sent
+[!] [Client 1] [Num=166] Sent
+[!] [Client 1] [Num=165] [ACK] Segment acked
+[!] [Client 1] [Num=167] Sent
+[!] [Client 1] [ERROR segment 166] ACK response error: timed out
+[!] [Client 1] [Num=166] Sent
+[!] [Client 1] [Num=167] Sent
+[!] [Client 1] [Num=166] [ACK] Segment acked
+[!] [Client 1] [Num=168] Sent
+[!] [Client 1] [ERROR segment 167] ACK response error: timed out
+[!] [Client 1] [Num=167] Sent
+[!] [Client 1] [Num=168] Sent
+[!] [Client 1] [Num=167] [ACK] Segment acked
+[!] [Client 1] [Num=169] Sent
+[!] [Client 1] [ERROR segment 168] ACK response error: timed out
+[!] [Client 1] [Num=168] Sent
+[!] [Client 1] [Num=169] Sent
+[!] [Client 1] [Num=168] [ACK] Segment acked
+[!] [Client 1] [Num=170] Sent
+[!] [Client 1] [ERROR segment 169] ACK response error: timed out
+[!] [Client 1] [Num=169] Sent
+[!] [Client 1] [Num=170] Sent
+[!] [Client 1] [Num=169] [ACK] Segment acked
+[!] [Client 1] [Num=171] Sent
+[!] [Client 1] [Num=170] [ACK] Segment acked
+[!] [Client 1] [Num=172] Sent
+[!] [Client 1] [Num=171] [ACK] Segment acked
+[!] [Client 1] [Num=173] Sent
+[!] [Client 1] [Num=172] [ACK] Segment acked
+[!] [Client 1] [Num=174] Sent
+[!] [Client 1] [Num=173] [ACK] Segment acked
+[!] [Client 1] [Num=175] Sent
+[!] [Client 1] [Num=174] [ACK] Segment acked
+[!] [Client 1] [Num=176] Sent
+[!] [Client 1] [ERROR segment 175] ACK response error: timed out
+[!] [Client 1] [Num=175] Sent
+[!] [Client 1] [Num=176] Sent
+[!] [Client 1] [Num=175] [ACK] Segment acked
+[!] [Client 1] [Num=177] Sent
+[!] [Client 1] [ERROR segment 176] ACK response error: timed out
+[!] [Client 1] [Num=176] Sent
+[!] [Client 1] [Num=177] Sent
+[!] [Client 1] [Num=176] [ACK] Segment acked
+[!] [Client 1] [Num=178] Sent
+[!] [Client 1] [Num=177] [ACK] Segment acked
+[!] [Client 1] [Num=179] Sent
+[!] [Client 1] [Num=178] [ACK] Segment acked
+[!] [Client 1] [Num=180] Sent
+[!] [Client 1] [Num=179] [ACK] Segment acked
+[!] [Client 1] [Num=181] Sent
+[!] [Client 1] [Num=180] [ACK] Segment acked
+[!] [Client 1] [Num=182] Sent
+[!] [Client 1] [ERROR segment 181] ACK response error: timed out
+[!] [Client 1] [Num=181] Sent
+[!] [Client 1] [Num=182] Sent
+[!] [Client 1] [Num=182] [ACK] Ack is not valid
+accepted : 182, expected : 181
+[!] [Client 1] [Num=181] Sent
+[!] [Client 1] [Num=182] Sent
+[!] [Client 1] [Num=181] [ACK] Segment acked
+[!] [Client 1] [Num=183] Sent
+[!] [Client 1] [Num=182] [ACK] Segment acked
+[!] [Client 1] [Num=184] Sent
+[!] [Client 1] [Num=183] [ACK] Segment acked
+[!] [Client 1] [Num=185] Sent
+[!] [Client 1] [Num=184] [ACK] Segment acked
+[!] [Client 1] [Num=186] Sent
+[!] [Client 1] [Num=186] [ACK] Ack is not valid
+accepted : 186, expected : 185
+[!] [Client 1] [Num=185] Sent
+[!] [Client 1] [Num=186] Sent
+[!] [Client 1] [Num=185] [ACK] Segment acked
+[!] [Client 1] [Num=187] Sent
+[!] [Client 1] [Num=186] [ACK] Segment acked
+[!] [Client 1] [Num=188] Sent
+[!] [Client 1] [Num=187] [ACK] Segment acked
+[!] [Client 1] [Num=189] Sent
+[!] [Client 1] [Num=188] [ACK] Segment acked
+[!] [Client 1] [Num=190] Sent
+[!] [Client 1] [Num=189] [ACK] Segment acked
+[!] [Client 1] [Num=191] Sent
+[!] [Client 1] [ERROR segment 190] ACK response error: timed out
+[!] [Client 1] [Num=190] Sent
+[!] [Client 1] [Num=191] Sent
+[!] [Client 1] [Num=190] [ACK] Segment acked
+[!] [Client 1] [Num=192] Sent
+[!] [Client 1] [ERROR segment 191] ACK response error: timed out
+[!] [Client 1] [Num=191] Sent
+[!] [Client 1] [Num=192] Sent
+[!] [Client 1] [ERROR segment 191] ACK response error: timed out
+[!] [Client 1] [Num=191] Sent
+[!] [Client 1] [Num=192] Sent
+[!] [Client 1] [Num=191] [ACK] Segment acked
+[!] [Client 1] [Num=193] Sent
+[!] [Client 1] [Num=193] [ACK] Ack is not valid
+accepted : 193, expected : 192
+[!] [Client 1] [Num=192] Sent
+[!] [Client 1] [Num=193] Sent
+[!] [Client 1] [Num=192] [ACK] Segment acked
+[!] [Client 1] [Num=194] Sent
+[!] [Client 1] [Num=193] [ACK] Segment acked
+[!] [Client 1] [Num=195] Sent
+[!] [Client 1] [Num=194] [ACK] Segment acked
+[!] [Client 1] [Num=196] Sent
+[!] [Client 1] [Num=195] [ACK] Segment acked
+[!] [Client 1] [Num=197] Sent
+[!] [Client 1] [Num=196] [ACK] Segment acked
+[!] [Client 1] [Num=198] Sent
+[!] [Client 1] [Num=198] [ACK] Ack is not valid
+accepted : 198, expected : 197
+[!] [Client 1] [Num=197] Sent
+[!] [Client 1] [Num=198] Sent
+[!] [Client 1] [Num=197] [ACK] Segment acked
+[!] [Client 1] [Num=199] Sent
+[!] [Client 1] [Num=198] [ACK] Segment acked
+[!] [Client 1] [Num=200] Sent
+[!] [Client 1] [Num=199] [ACK] Segment acked
+[!] [Client 1] [Num=201] Sent
+[!] [Client 1] [Num=200] [ACK] Segment acked
+[!] [Client 1] [Num=202] Sent
+[!] [Client 1] [Num=201] [ACK] Segment acked
+[!] [Client 1] [Num=203] Sent
+[!] [Client 1] [Num=202] [ACK] Segment acked
+[!] [Client 1] [Num=204] Sent
+[!] [Client 1] [ERROR segment 203] ACK response error: timed out
+[!] [Client 1] [Num=203] Sent
+[!] [Client 1] [Num=204] Sent
+[!] [Client 1] [Num=204] [ACK] Ack is not valid
+accepted : 204, expected : 203
+[!] [Client 1] [Num=203] Sent
+[!] [Client 1] [Num=204] Sent
+[!] [Client 1] [Num=203] [ACK] Segment acked
+[!] [Client 1] [Num=205] Sent
+[!] [Client 1] [Num=204] [ACK] Segment acked
+[!] [Client 1] [Num=206] Sent
+[!] [Client 1] [Num=205] [ACK] Segment acked
+[!] [Client 1] [Num=207] Sent
+[!] [Client 1] [ERROR segment 206] ACK response error: timed out
+[!] [Client 1] [Num=206] Sent
+[!] [Client 1] [Num=207] Sent
+[!] [Client 1] [Num=206] [ACK] Segment acked
+[!] [Client 1] [Num=208] Sent
+[!] [Client 1] [ERROR segment 207] ACK response error: timed out
+[!] [Client 1] [Num=207] Sent
+[!] [Client 1] [Num=208] Sent
+[!] [Client 1] [Num=207] [ACK] Segment acked
+[!] [Client 1] [Num=209] Sent
+[!] [Client 1] [ERROR segment 208] ACK response error: timed out
+[!] [Client 1] [Num=208] Sent
+[!] [Client 1] [Num=209] Sent
+[!] [Client 1] [Num=208] [ACK] Segment acked
+[!] [Client 1] [Num=210] Sent
+[!] [Client 1] [ERROR segment 209] ACK response error: timed out
+[!] [Client 1] [Num=209] Sent
+[!] [Client 1] [Num=210] Sent
+[!] [Client 1] [Num=209] [ACK] Segment acked
+[!] [Client 1] [Num=211] Sent
+[!] [Client 1] [ERROR segment 210] ACK response error: timed out
+[!] [Client 1] [Num=210] Sent
+[!] [Client 1] [Num=211] Sent
+[!] [Client 1] [ERROR segment 210] ACK response error: timed out
+[!] [Client 1] [Num=210] Sent
+[!] [Client 1] [Num=211] Sent
+[!] [Client 1] [Num=211] [ACK] Ack is not valid
+accepted : 211, expected : 210
+[!] [Client 1] [Num=210] Sent
+[!] [Client 1] [Num=211] Sent
+[!] [Client 1] [Num=210] [ACK] Segment acked
+[!] [Client 1] [Num=212] Sent
+[!] [Client 1] [Num=212] [ACK] Ack is not valid
+accepted : 212, expected : 211
+[!] [Client 1] [Num=211] Sent
+[!] [Client 1] [Num=212] Sent
+[!] [Client 1] [Num=212] [ACK] Ack is not valid
+accepted : 212, expected : 211
+[!] [Client 1] [Num=211] Sent
+[!] [Client 1] [Num=212] Sent
+[!] [Client 1] [Num=211] [ACK] Segment acked
+[!] [Client 1] [Num=213] Sent
+[!] [Client 1] [Num=212] [ACK] Segment acked
+[!] [Client 1] [Num=214] Sent
+[!] [Client 1] [Num=214] [ACK] Ack is not valid
+accepted : 214, expected : 213
+[!] [Client 1] [Num=213] Sent
+[!] [Client 1] [Num=214] Sent
+[!] [Client 1] [Num=213] [ACK] Segment acked
+[!] [Client 1] [Num=215] Sent
+[!] [Client 1] [Num=215] [ACK] Ack is not valid
+accepted : 215, expected : 214
+[!] [Client 1] [Num=214] Sent
+[!] [Client 1] [Num=215] Sent
+[!] [Client 1] [Num=214] [ACK] Segment acked
+[!] [Client 1] [Num=216] Sent
+[!] [Client 1] [Num=215] [ACK] Segment acked
+[!] [Client 1] [Num=217] Sent
+[!] [Client 1] [Num=216] [ACK] Segment acked
+[!] [Client 1] [Num=218] Sent
+[!] [Client 1] [Num=217] [ACK] Segment acked
+[!] [Client 1] [Num=219] Sent
+[!] [Client 1] [Num=218] [ACK] Segment acked
+[!] [Client 1] [Num=220] Sent
+[!] [Client 1] [Num=219] [ACK] Segment acked
+[!] [Client 1] [Num=221] Sent
+[!] [Client 1] [Num=220] [ACK] Segment acked
+[!] [Client 1] [Num=222] Sent
+[!] [Client 1] [Num=221] [ACK] Segment acked
+[!] [Client 1] [Num=223] Sent
+[!] [Client 1] [Num=222] [ACK] Segment acked
+[!] [Client 1] [Num=224] Sent
+[!] [Client 1] [ERROR segment 223] ACK response error: timed out
+[!] [Client 1] [Num=223] Sent
+[!] [Client 1] [Num=224] Sent
+[!] [Client 1] [Num=223] [ACK] Segment acked
+[!] [Client 1] [Num=225] Sent
+[!] [Client 1] [Num=224] [ACK] Segment acked
+[!] [Client 1] [Num=226] Sent
+[!] [Client 1] [Num=225] [ACK] Segment acked
+[!] [Client 1] [Num=227] Sent
+[!] [Client 1] [Num=226] [ACK] Segment acked
+[!] [Client 1] [Num=228] Sent
+[!] [Client 1] [Num=227] [ACK] Segment acked
+[!] [Client 1] [Num=229] Sent
+[!] [Client 1] [Num=228] [ACK] Segment acked
+[!] [Client 1] [Num=230] Sent
+[!] [Client 1] [ERROR segment 229] ACK response error: timed out
+[!] [Client 1] [Num=229] Sent
+[!] [Client 1] [Num=230] Sent
+[!] [Client 1] [Num=229] [ACK] Segment acked
+[!] [Client 1] [Num=231] Sent
+[!] [Client 1] [Num=230] [ACK] Segment acked
+[!] [Client 1] [Num=232] Sent
+[!] [Client 1] [ERROR segment 231] ACK response error: timed out
+[!] [Client 1] [Num=231] Sent
+[!] [Client 1] [Num=232] Sent
+[!] [Client 1] [Num=231] [ACK] Segment acked
+[!] [Client 1] [Num=233] Sent
+[!] [Client 1] [Num=232] [ACK] Segment acked
+[!] [Client 1] [Num=234] Sent
+[!] [Client 1] [Num=233] [ACK] Segment acked
+[!] [Client 1] [Num=235] Sent
+[!] [Client 1] [ERROR segment 234] ACK response error: timed out
+[!] [Client 1] [Num=234] Sent
+[!] [Client 1] [Num=235] Sent
+[!] [Client 1] [ERROR segment 234] ACK response error: timed out
+[!] [Client 1] [Num=234] Sent
+[!] [Client 1] [Num=235] Sent
+[!] [Client 1] [Num=234] [ACK] Segment acked
+[!] [Client 1] [Num=235] [ACK] Segment acked
+[!] [Client 1] [FIN] Sending FIN .....
+[!] [Client 1] [FIN] Acked
+[!] [Handshake] Handshake to client 2...
+[!] [Handshake] Sending SYN ACK to client
+timed out
+[!] [Client 2] Initiating file transfer...
+[!] [Client 2] [Metadata] Sent
+[!] [Client 2] [Metadata] [ACK] Segment acked
+[!] [Client 2] [Num=1] Sent
+[!] [Client 2] [Num=2] Sent
+[!] [Client 2] [Num=1] [ACK] Segment acked
+[!] [Client 2] [Num=3] Sent
+[!] [Client 2] [Num=3] [ACK] Ack is not valid
+accepted : 3, expected : 2
+[!] [Client 2] [Num=2] Sent
+[!] [Client 2] [Num=3] Sent
+[!] [Client 2] [Num=2] [ACK] Segment acked
+[!] [Client 2] [Num=4] Sent
+[!] [Client 2] [Num=3] [ACK] Segment acked
+[!] [Client 2] [Num=5] Sent
+[!] [Client 2] [Num=4] [ACK] Segment acked
+[!] [Client 2] [Num=6] Sent
+[!] [Client 2] [ERROR segment 5] ACK response error: timed out
+[!] [Client 2] [Num=5] Sent
+[!] [Client 2] [Num=6] Sent
+[!] [Client 2] [ERROR segment 5] ACK response error: timed out
+[!] [Client 2] [Num=5] Sent
+[!] [Client 2] [Num=6] Sent
+[!] [Client 2] [Num=5] [ACK] Segment acked
+[!] [Client 2] [Num=7] Sent
+[!] [Client 2] [Num=6] [ACK] Segment acked
+[!] [Client 2] [Num=8] Sent
+[!] [Client 2] [Num=7] [ACK] Segment acked
+[!] [Client 2] [Num=9] Sent
+[!] [Client 2] [Num=8] [ACK] Segment acked
+[!] [Client 2] [Num=10] Sent
+[!] [Client 2] [Num=9] [ACK] Segment acked
+[!] [Client 2] [Num=11] Sent
+[!] [Client 2] [Num=10] [ACK] Segment acked
+[!] [Client 2] [Num=12] Sent
+[!] [Client 2] [Num=11] [ACK] Segment acked
+[!] [Client 2] [Num=13] Sent
+[!] [Client 2] [Num=12] [ACK] Segment acked
+[!] [Client 2] [Num=14] Sent
+[!] [Client 2] [Num=13] [ACK] Segment acked
+[!] [Client 2] [Num=15] Sent
+[!] [Client 2] [Num=14] [ACK] Segment acked
+[!] [Client 2] [Num=16] Sent
+[!] [Client 2] [Num=15] [ACK] Segment acked
+[!] [Client 2] [Num=17] Sent
+[!] [Client 2] [Num=16] [ACK] Segment acked
+[!] [Client 2] [Num=18] Sent
+[!] [Client 2] [Num=17] [ACK] Segment acked
+[!] [Client 2] [Num=19] Sent
+[!] [Client 2] [ERROR segment 18] ACK response error: timed out
+[!] [Client 2] [Num=18] Sent
+[!] [Client 2] [Num=19] Sent
+[!] [Client 2] [Num=18] [ACK] Segment acked
+[!] [Client 2] [Num=20] Sent
+[!] [Client 2] [Num=19] [ACK] Segment acked
+[!] [Client 2] [Num=21] Sent
+[!] [Client 2] [ERROR segment 20] ACK response error: timed out
+[!] [Client 2] [Num=20] Sent
+[!] [Client 2] [Num=21] Sent
+[!] [Client 2] [Num=21] [ACK] Ack is not valid
+accepted : 21, expected : 20
+[!] [Client 2] [Num=20] Sent
+[!] [Client 2] [Num=21] Sent
+[!] [Client 2] [Num=20] [ACK] Segment acked
+[!] [Client 2] [Num=22] Sent
+[!] [Client 2] [Num=22] [ACK] Ack is not valid
+accepted : 22, expected : 21
+[!] [Client 2] [Num=21] Sent
+[!] [Client 2] [Num=22] Sent
+[!] [Client 2] [Num=22] [ACK] Ack is not valid
+accepted : 22, expected : 21
+[!] [Client 2] [Num=21] Sent
+[!] [Client 2] [Num=22] Sent
+[!] [Client 2] [Num=21] [ACK] Segment acked
+[!] [Client 2] [Num=23] Sent
+[!] [Client 2] [Num=22] [ACK] Segment acked
+[!] [Client 2] [Num=24] Sent
+[!] [Client 2] [Num=23] [ACK] Segment acked
+[!] [Client 2] [Num=25] Sent
+[!] [Client 2] [Num=24] [ACK] Segment acked
+[!] [Client 2] [Num=26] Sent
+[!] [Client 2] [Num=25] [ACK] Segment acked
+[!] [Client 2] [Num=27] Sent
+[!] [Client 2] [Num=26] [ACK] Segment acked
+[!] [Client 2] [Num=28] Sent
+[!] [Client 2] [Num=27] [ACK] Segment acked
+[!] [Client 2] [Num=29] Sent
+[!] [Client 2] [ERROR segment 28] ACK response error: timed out
+[!] [Client 2] [Num=28] Sent
+[!] [Client 2] [Num=29] Sent
+[!] [Client 2] [Num=28] [ACK] Segment acked
+[!] [Client 2] [Num=30] Sent
+[!] [Client 2] [Num=29] [ACK] Segment acked
+[!] [Client 2] [Num=31] Sent
+[!] [Client 2] [Num=30] [ACK] Segment acked
+[!] [Client 2] [Num=32] Sent
+[!] [Client 2] [Num=32] [ACK] Ack is not valid
+accepted : 32, expected : 31
+[!] [Client 2] [Num=31] Sent
+[!] [Client 2] [Num=32] Sent
+[!] [Client 2] [Num=31] [ACK] Segment acked
+[!] [Client 2] [Num=33] Sent
+[!] [Client 2] [Num=33] [ACK] Ack is not valid
+accepted : 33, expected : 32
+[!] [Client 2] [Num=32] Sent
+[!] [Client 2] [Num=33] Sent
+[!] [Client 2] [Num=32] [ACK] Segment acked
+[!] [Client 2] [Num=34] Sent
+[!] [Client 2] [Num=33] [ACK] Segment acked
+[!] [Client 2] [Num=35] Sent
+[!] [Client 2] [Num=34] [ACK] Segment acked
+[!] [Client 2] [Num=36] Sent
+[!] [Client 2] [ERROR segment 35] ACK response error: timed out
+[!] [Client 2] [Num=35] Sent
+[!] [Client 2] [Num=36] Sent
+[!] [Client 2] [Num=36] [ACK] Ack is not valid
+accepted : 36, expected : 35
+[!] [Client 2] [Num=35] Sent
+[!] [Client 2] [Num=36] Sent
+[!] [Client 2] [Num=35] [ACK] Segment acked
+[!] [Client 2] [Num=37] Sent
+[!] [Client 2] [Num=36] [ACK] Segment acked
+[!] [Client 2] [Num=38] Sent
+[!] [Client 2] [Num=37] [ACK] Segment acked
+[!] [Client 2] [Num=39] Sent
+[!] [Client 2] [ERROR segment 38] ACK response error: timed out
+[!] [Client 2] [Num=38] Sent
+[!] [Client 2] [Num=39] Sent
+[!] [Client 2] [Num=38] [ACK] Segment acked
+[!] [Client 2] [Num=40] Sent
+[!] [Client 2] [ERROR segment 39] ACK response error: timed out
+[!] [Client 2] [Num=39] Sent
+[!] [Client 2] [Num=40] Sent
+[!] [Client 2] [Num=40] [ACK] Ack is not valid
+accepted : 40, expected : 39
+[!] [Client 2] [Num=39] Sent
+[!] [Client 2] [Num=40] Sent
+[!] [Client 2] [Num=40] [ACK] Ack is not valid
+accepted : 40, expected : 39
+[!] [Client 2] [Num=39] Sent
+[!] [Client 2] [Num=40] Sent
+[!] [Client 2] [Num=39] [ACK] Segment acked
+[!] [Client 2] [Num=41] Sent
+[!] [Client 2] [Num=41] [ACK] Ack is not valid
+accepted : 41, expected : 40
+[!] [Client 2] [Num=40] Sent
+[!] [Client 2] [Num=41] Sent
+[!] [Client 2] [Num=40] [ACK] Segment acked
+[!] [Client 2] [Num=42] Sent
+[!] [Client 2] [Num=41] [ACK] Segment acked
+[!] [Client 2] [Num=43] Sent
+[!] [Client 2] [Num=42] [ACK] Segment acked
+[!] [Client 2] [Num=44] Sent
+[!] [Client 2] [Num=44] [ACK] Ack is not valid
+accepted : 44, expected : 43
+[!] [Client 2] [Num=43] Sent
+[!] [Client 2] [Num=44] Sent
+[!] [Client 2] [Num=43] [ACK] Segment acked
+[!] [Client 2] [Num=45] Sent
+[!] [Client 2] [Num=45] [ACK] Ack is not valid
+accepted : 45, expected : 44
+[!] [Client 2] [Num=44] Sent
+[!] [Client 2] [Num=45] Sent
+[!] [Client 2] [Num=44] [ACK] Segment acked
+[!] [Client 2] [Num=46] Sent
+[!] [Client 2] [Num=45] [ACK] Segment acked
+[!] [Client 2] [Num=47] Sent
+[!] [Client 2] [ERROR segment 46] ACK response error: timed out
+[!] [Client 2] [Num=46] Sent
+[!] [Client 2] [Num=47] Sent
+[!] [Client 2] [Num=46] [ACK] Segment acked
+[!] [Client 2] [Num=48] Sent
+[!] [Client 2] [Num=48] [ACK] Ack is not valid
+accepted : 48, expected : 47
+[!] [Client 2] [Num=47] Sent
+[!] [Client 2] [Num=48] Sent
+[!] [Client 2] [Num=48] [ACK] Ack is not valid
+accepted : 48, expected : 47
+[!] [Client 2] [Num=47] Sent
+[!] [Client 2] [Num=48] Sent
+[!] [Client 2] [Num=48] [ACK] Ack is not valid
+accepted : 48, expected : 47
+[!] [Client 2] [Num=47] Sent
+[!] [Client 2] [Num=48] Sent
+[!] [Client 2] [Num=47] [ACK] Segment acked
+[!] [Client 2] [Num=49] Sent
+[!] [Client 2] [Num=49] [ACK] Ack is not valid
+accepted : 49, expected : 48
+[!] [Client 2] [Num=48] Sent
+[!] [Client 2] [Num=49] Sent
+[!] [Client 2] [Num=48] [ACK] Segment acked
+[!] [Client 2] [Num=50] Sent
+[!] [Client 2] [Num=49] [ACK] Segment acked
+[!] [Client 2] [Num=51] Sent
+[!] [Client 2] [Num=50] [ACK] Segment acked
+[!] [Client 2] [Num=52] Sent
+[!] [Client 2] [ERROR segment 51] ACK response error: timed out
+[!] [Client 2] [Num=51] Sent
+[!] [Client 2] [Num=52] Sent
+[!] [Client 2] [Num=51] [ACK] Segment acked
+[!] [Client 2] [Num=53] Sent
+[!] [Client 2] [ERROR segment 52] ACK response error: timed out
+[!] [Client 2] [Num=52] Sent
+[!] [Client 2] [Num=53] Sent
+[!] [Client 2] [Num=52] [ACK] Segment acked
+[!] [Client 2] [Num=54] Sent
+[!] [Client 2] [Num=53] [ACK] Segment acked
+[!] [Client 2] [Num=55] Sent
+[!] [Client 2] [Num=54] [ACK] Segment acked
+[!] [Client 2] [Num=56] Sent
+[!] [Client 2] [Num=55] [ACK] Segment acked
+[!] [Client 2] [Num=57] Sent
+[!] [Client 2] [Num=56] [ACK] Segment acked
+[!] [Client 2] [Num=58] Sent
+[!] [Client 2] [Num=58] [ACK] Ack is not valid
+accepted : 58, expected : 57
+[!] [Client 2] [Num=57] Sent
+[!] [Client 2] [Num=58] Sent
+[!] [Client 2] [Num=58] [ACK] Ack is not valid
+accepted : 58, expected : 57
+[!] [Client 2] [Num=57] Sent
+[!] [Client 2] [Num=58] Sent
+[!] [Client 2] [Num=57] [ACK] Segment acked
+[!] [Client 2] [Num=59] Sent
+[!] [Client 2] [Num=59] [ACK] Ack is not valid
+accepted : 59, expected : 58
+[!] [Client 2] [Num=58] Sent
+[!] [Client 2] [Num=59] Sent
+[!] [Client 2] [Num=58] [ACK] Segment acked
+[!] [Client 2] [Num=60] Sent
+[!] [Client 2] [Num=59] [ACK] Segment acked
+[!] [Client 2] [Num=61] Sent
+[!] [Client 2] [Num=60] [ACK] Segment acked
+[!] [Client 2] [Num=62] Sent
+[!] [Client 2] [Num=61] [ACK] Segment acked
+[!] [Client 2] [Num=63] Sent
+[!] [Client 2] [Num=62] [ACK] Segment acked
+[!] [Client 2] [Num=64] Sent
+[!] [Client 2] [Num=63] [ACK] Segment acked
+[!] [Client 2] [Num=65] Sent
+[!] [Client 2] [Num=64] [ACK] Segment acked
+[!] [Client 2] [Num=66] Sent
+[!] [Client 2] [ERROR segment 65] ACK response error: timed out
+[!] [Client 2] [Num=65] Sent
+[!] [Client 2] [Num=66] Sent
+[!] [Client 2] [Num=65] [ACK] Segment acked
+[!] [Client 2] [Num=67] Sent
+[!] [Client 2] [Num=66] [ACK] Segment acked
+[!] [Client 2] [Num=68] Sent
+[!] [Client 2] [Num=67] [ACK] Segment acked
+[!] [Client 2] [Num=69] Sent
+[!] [Client 2] [ERROR segment 68] ACK response error: timed out
+[!] [Client 2] [Num=68] Sent
+[!] [Client 2] [Num=69] Sent
+[!] [Client 2] [Num=68] [ACK] Segment acked
+[!] [Client 2] [Num=70] Sent
+[!] [Client 2] [Num=69] [ACK] Segment acked
+[!] [Client 2] [Num=71] Sent
+[!] [Client 2] [Num=70] [ACK] Segment acked
+[!] [Client 2] [Num=72] Sent
+[!] [Client 2] [Num=71] [ACK] Segment acked
+[!] [Client 2] [Num=73] Sent
+[!] [Client 2] [Num=72] [ACK] Segment acked
+[!] [Client 2] [Num=74] Sent
+[!] [Client 2] [Num=73] [ACK] Segment acked
+[!] [Client 2] [Num=75] Sent
+[!] [Client 2] [ERROR segment 74] ACK response error: timed out
+[!] [Client 2] [Num=74] Sent
+[!] [Client 2] [Num=75] Sent
+[!] [Client 2] [ERROR segment 74] ACK response error: timed out
+[!] [Client 2] [Num=74] Sent
+[!] [Client 2] [Num=75] Sent
+[!] [Client 2] [ERROR segment 74] ACK response error: timed out
+[!] [Client 2] [Num=74] Sent
+[!] [Client 2] [Num=75] Sent
+[!] [Client 2] [Num=74] [ACK] Segment acked
+[!] [Client 2] [Num=76] Sent
+[!] [Client 2] [Num=76] [ACK] Ack is not valid
+accepted : 76, expected : 75
+[!] [Client 2] [Num=75] Sent
+[!] [Client 2] [Num=76] Sent
+[!] [Client 2] [Num=76] [ACK] Ack is not valid
+accepted : 76, expected : 75
+[!] [Client 2] [Num=75] Sent
+[!] [Client 2] [Num=76] Sent
+[!] [Client 2] [Num=75] [ACK] Segment acked
+[!] [Client 2] [Num=77] Sent
+[!] [Client 2] [Num=76] [ACK] Segment acked
+[!] [Client 2] [Num=78] Sent
+[!] [Client 2] [Num=77] [ACK] Segment acked
+[!] [Client 2] [Num=79] Sent
+[!] [Client 2] [Num=78] [ACK] Segment acked
+[!] [Client 2] [Num=80] Sent
+[!] [Client 2] [Num=79] [ACK] Segment acked
+[!] [Client 2] [Num=81] Sent
+[!] [Client 2] [ERROR segment 80] ACK response error: timed out
+[!] [Client 2] [Num=80] Sent
+[!] [Client 2] [Num=81] Sent
+[!] [Client 2] [Num=81] [ACK] Ack is not valid
+accepted : 81, expected : 80
+[!] [Client 2] [Num=80] Sent
+[!] [Client 2] [Num=81] Sent
+[!] [Client 2] [Num=80] [ACK] Segment acked
+[!] [Client 2] [Num=82] Sent
+[!] [Client 2] [Num=82] [ACK] Ack is not valid
+accepted : 82, expected : 81
+[!] [Client 2] [Num=81] Sent
+[!] [Client 2] [Num=82] Sent
+[!] [Client 2] [Num=81] [ACK] Segment acked
+[!] [Client 2] [Num=83] Sent
+[!] [Client 2] [Num=83] [ACK] Ack is not valid
+accepted : 83, expected : 82
+[!] [Client 2] [Num=82] Sent
+[!] [Client 2] [Num=83] Sent
+[!] [Client 2] [Num=82] [ACK] Segment acked
+[!] [Client 2] [Num=84] Sent
+[!] [Client 2] [Num=83] [ACK] Segment acked
+[!] [Client 2] [Num=85] Sent
+[!] [Client 2] [Num=84] [ACK] Segment acked
+[!] [Client 2] [Num=86] Sent
+[!] [Client 2] [Num=85] [ACK] Segment acked
+[!] [Client 2] [Num=87] Sent
+[!] [Client 2] [ERROR segment 86] ACK response error: timed out
+[!] [Client 2] [Num=86] Sent
+[!] [Client 2] [Num=87] Sent
+[!] [Client 2] [Num=86] [ACK] Segment acked
+[!] [Client 2] [Num=88] Sent
+[!] [Client 2] [Num=87] [ACK] Segment acked
+[!] [Client 2] [Num=89] Sent
+[!] [Client 2] [Num=88] [ACK] Segment acked
+[!] [Client 2] [Num=90] Sent
+[!] [Client 2] [ERROR segment 89] ACK response error: timed out
+[!] [Client 2] [Num=89] Sent
+[!] [Client 2] [Num=90] Sent
+[!] [Client 2] [ERROR segment 89] ACK response error: timed out
+[!] [Client 2] [Num=89] Sent
+[!] [Client 2] [Num=90] Sent
+[!] [Client 2] [Num=89] [ACK] Segment acked
+[!] [Client 2] [Num=91] Sent
+[!] [Client 2] [Num=90] [ACK] Segment acked
+[!] [Client 2] [Num=92] Sent
+[!] [Client 2] [Num=91] [ACK] Segment acked
+[!] [Client 2] [Num=93] Sent
+[!] [Client 2] [Num=92] [ACK] Segment acked
+[!] [Client 2] [Num=94] Sent
+[!] [Client 2] [Num=93] [ACK] Segment acked
+[!] [Client 2] [Num=95] Sent
+[!] [Client 2] [ERROR segment 94] ACK response error: timed out
+[!] [Client 2] [Num=94] Sent
+[!] [Client 2] [Num=95] Sent
+[!] [Client 2] [Num=95] [ACK] Ack is not valid
+accepted : 95, expected : 94
+[!] [Client 2] [Num=94] Sent
+[!] [Client 2] [Num=95] Sent
+[!] [Client 2] [Num=94] [ACK] Segment acked
+[!] [Client 2] [Num=96] Sent
+[!] [Client 2] [Num=95] [ACK] Segment acked
+[!] [Client 2] [Num=97] Sent
+[!] [Client 2] [Num=96] [ACK] Segment acked
+[!] [Client 2] [Num=98] Sent
+[!] [Client 2] [Num=98] [ACK] Ack is not valid
+accepted : 98, expected : 97
+[!] [Client 2] [Num=97] Sent
+[!] [Client 2] [Num=98] Sent
+[!] [Client 2] [Num=98] [ACK] Ack is not valid
+accepted : 98, expected : 97
+[!] [Client 2] [Num=97] Sent
+[!] [Client 2] [Num=98] Sent
+[!] [Client 2] [Num=98] [ACK] Ack is not valid
+accepted : 98, expected : 97
+[!] [Client 2] [Num=97] Sent
+[!] [Client 2] [Num=98] Sent
+[!] [Client 2] [Num=97] [ACK] Segment acked
+[!] [Client 2] [Num=99] Sent
+[!] [Client 2] [Num=98] [ACK] Segment acked
+[!] [Client 2] [Num=100] Sent
+[!] [Client 2] [Num=100] [ACK] Ack is not valid
+accepted : 100, expected : 99
+[!] [Client 2] [Num=99] Sent
+[!] [Client 2] [Num=100] Sent
+[!] [Client 2] [Num=99] [ACK] Segment acked
+[!] [Client 2] [Num=101] Sent
+[!] [Client 2] [Num=100] [ACK] Segment acked
+[!] [Client 2] [Num=102] Sent
+[!] [Client 2] [Num=102] [ACK] Ack is not valid
+accepted : 102, expected : 101
+[!] [Client 2] [Num=101] Sent
+[!] [Client 2] [Num=102] Sent
+[!] [Client 2] [Num=101] [ACK] Segment acked
+[!] [Client 2] [Num=103] Sent
+[!] [Client 2] [Num=102] [ACK] Segment acked
+[!] [Client 2] [Num=104] Sent
+[!] [Client 2] [Num=103] [ACK] Segment acked
+[!] [Client 2] [Num=105] Sent
+[!] [Client 2] [Num=104] [ACK] Segment acked
+[!] [Client 2] [Num=106] Sent
+[!] [Client 2] [Num=105] [ACK] Segment acked
+[!] [Client 2] [Num=107] Sent
+[!] [Client 2] [Num=107] [ACK] Ack is not valid
+accepted : 107, expected : 106
+[!] [Client 2] [Num=106] Sent
+[!] [Client 2] [Num=107] Sent
+[!] [Client 2] [Num=106] [ACK] Segment acked
+[!] [Client 2] [Num=108] Sent
+[!] [Client 2] [Num=107] [ACK] Segment acked
+[!] [Client 2] [Num=109] Sent
+[!] [Client 2] [ERROR segment 108] ACK response error: timed out
+[!] [Client 2] [Num=108] Sent
+[!] [Client 2] [Num=109] Sent
+[!] [Client 2] [Num=108] [ACK] Segment acked
+[!] [Client 2] [Num=110] Sent
+[!] [Client 2] [Num=109] [ACK] Segment acked
+[!] [Client 2] [Num=111] Sent
+[!] [Client 2] [Num=110] [ACK] Segment acked
+[!] [Client 2] [Num=112] Sent
+[!] [Client 2] [Num=112] [ACK] Ack is not valid
+accepted : 112, expected : 111
+[!] [Client 2] [Num=111] Sent
+[!] [Client 2] [Num=112] Sent
+[!] [Client 2] [Num=111] [ACK] Segment acked
+[!] [Client 2] [Num=113] Sent
+[!] [Client 2] [Num=112] [ACK] Segment acked
+[!] [Client 2] [Num=114] Sent
+[!] [Client 2] [ERROR segment 113] ACK response error: timed out
+[!] [Client 2] [Num=113] Sent
+[!] [Client 2] [Num=114] Sent
+[!] [Client 2] [Num=113] [ACK] Segment acked
+[!] [Client 2] [Num=115] Sent
+[!] [Client 2] [ERROR segment 114] ACK response error: timed out
+[!] [Client 2] [Num=114] Sent
+[!] [Client 2] [Num=115] Sent
+[!] [Client 2] [Num=114] [ACK] Segment acked
+[!] [Client 2] [Num=116] Sent
+[!] [Client 2] [Num=115] [ACK] Segment acked
+[!] [Client 2] [Num=117] Sent
+[!] [Client 2] [Num=116] [ACK] Segment acked
+[!] [Client 2] [Num=118] Sent
+[!] [Client 2] [ERROR segment 117] ACK response error: timed out
+[!] [Client 2] [Num=117] Sent
+[!] [Client 2] [Num=118] Sent
+[!] [Client 2] [Num=117] [ACK] Segment acked
+[!] [Client 2] [Num=119] Sent
+[!] [Client 2] [ERROR segment 118] ACK response error: timed out
+[!] [Client 2] [Num=118] Sent
+[!] [Client 2] [Num=119] Sent
+[!] [Client 2] [Num=119] [ACK] Ack is not valid
+accepted : 119, expected : 118
+[!] [Client 2] [Num=118] Sent
+[!] [Client 2] [Num=119] Sent
+[!] [Client 2] [Num=119] [ACK] Ack is not valid
+accepted : 119, expected : 118
+[!] [Client 2] [Num=118] Sent
+[!] [Client 2] [Num=119] Sent
+[!] [Client 2] [Num=118] [ACK] Segment acked
+[!] [Client 2] [Num=120] Sent
+[!] [Client 2] [Num=120] [ACK] Ack is not valid
+accepted : 120, expected : 119
+[!] [Client 2] [Num=119] Sent
+[!] [Client 2] [Num=120] Sent
+[!] [Client 2] [Num=120] [ACK] Ack is not valid
+accepted : 120, expected : 119
+[!] [Client 2] [Num=119] Sent
+[!] [Client 2] [Num=120] Sent
+[!] [Client 2] [Num=119] [ACK] Segment acked
+[!] [Client 2] [Num=121] Sent
+[!] [Client 2] [Num=120] [ACK] Segment acked
+[!] [Client 2] [Num=122] Sent
+[!] [Client 2] [Num=121] [ACK] Segment acked
+[!] [Client 2] [Num=123] Sent
+[!] [Client 2] [Num=122] [ACK] Segment acked
+[!] [Client 2] [Num=124] Sent
+[!] [Client 2] [Num=123] [ACK] Segment acked
+[!] [Client 2] [Num=125] Sent
+[!] [Client 2] [Num=124] [ACK] Segment acked
+[!] [Client 2] [Num=126] Sent
+[!] [Client 2] [Num=125] [ACK] Segment acked
+[!] [Client 2] [Num=127] Sent
+[!] [Client 2] [Num=126] [ACK] Segment acked
+[!] [Client 2] [Num=128] Sent
+[!] [Client 2] [Num=127] [ACK] Segment acked
+[!] [Client 2] [Num=129] Sent
+[!] [Client 2] [ERROR segment 128] ACK response error: timed out
+[!] [Client 2] [Num=128] Sent
+[!] [Client 2] [Num=129] Sent
+[!] [Client 2] [Num=128] [ACK] Segment acked
+[!] [Client 2] [Num=130] Sent
+[!] [Client 2] [ERROR segment 129] ACK response error: timed out
+[!] [Client 2] [Num=129] Sent
+[!] [Client 2] [Num=130] Sent
+[!] [Client 2] [Num=129] [ACK] Segment acked
+[!] [Client 2] [Num=131] Sent
+[!] [Client 2] [ERROR segment 130] ACK response error: timed out
+[!] [Client 2] [Num=130] Sent
+[!] [Client 2] [Num=131] Sent
+[!] [Client 2] [Num=130] [ACK] Segment acked
+[!] [Client 2] [Num=132] Sent
+[!] [Client 2] [ERROR segment 131] ACK response error: timed out
+[!] [Client 2] [Num=131] Sent
+[!] [Client 2] [Num=132] Sent
+[!] [Client 2] [Num=131] [ACK] Segment acked
+[!] [Client 2] [Num=133] Sent
+[!] [Client 2] [ERROR segment 132] ACK response error: timed out
+[!] [Client 2] [Num=132] Sent
+[!] [Client 2] [Num=133] Sent
+[!] [Client 2] [Num=132] [ACK] Segment acked
+[!] [Client 2] [Num=134] Sent
+[!] [Client 2] [ERROR segment 133] ACK response error: timed out
+[!] [Client 2] [Num=133] Sent
+[!] [Client 2] [Num=134] Sent
+[!] [Client 2] [Num=133] [ACK] Segment acked
+[!] [Client 2] [Num=135] Sent
+[!] [Client 2] [ERROR segment 134] ACK response error: timed out
+[!] [Client 2] [Num=134] Sent
+[!] [Client 2] [Num=135] Sent
+[!] [Client 2] [ERROR segment 134] ACK response error: timed out
+[!] [Client 2] [Num=134] Sent
+[!] [Client 2] [Num=135] Sent
+[!] [Client 2] [Num=134] [ACK] Segment acked
+[!] [Client 2] [Num=136] Sent
+[!] [Client 2] [ERROR segment 135] ACK response error: timed out
+[!] [Client 2] [Num=135] Sent
+[!] [Client 2] [Num=136] Sent
+[!] [Client 2] [ERROR segment 135] ACK response error: timed out
+[!] [Client 2] [Num=135] Sent
+[!] [Client 2] [Num=136] Sent
+[!] [Client 2] [Num=135] [ACK] Segment acked
+[!] [Client 2] [Num=137] Sent
+[!] [Client 2] [ERROR segment 136] ACK response error: timed out
+[!] [Client 2] [Num=136] Sent
+[!] [Client 2] [Num=137] Sent
+[!] [Client 2] [Num=137] [ACK] Ack is not valid
+accepted : 137, expected : 136
+[!] [Client 2] [Num=136] Sent
+[!] [Client 2] [Num=137] Sent
+[!] [Client 2] [Num=136] [ACK] Segment acked
+[!] [Client 2] [Num=138] Sent
+[!] [Client 2] [ERROR segment 137] ACK response error: timed out
+[!] [Client 2] [Num=137] Sent
+[!] [Client 2] [Num=138] Sent
+[!] [Client 2] [Num=138] [ACK] Ack is not valid
+accepted : 138, expected : 137
+[!] [Client 2] [Num=137] Sent
+[!] [Client 2] [Num=138] Sent
+[!] [Client 2] [Num=137] [ACK] Segment acked
+[!] [Client 2] [Num=139] Sent
+[!] [Client 2] [Num=139] [ACK] Ack is not valid
+accepted : 139, expected : 138
+[!] [Client 2] [Num=138] Sent
+[!] [Client 2] [Num=139] Sent
+[!] [Client 2] [Num=139] [ACK] Ack is not valid
+accepted : 139, expected : 138
+[!] [Client 2] [Num=138] Sent
+[!] [Client 2] [Num=139] Sent
+[!] [Client 2] [Num=138] [ACK] Segment acked
+[!] [Client 2] [Num=140] Sent
+[!] [Client 2] [Num=139] [ACK] Segment acked
+[!] [Client 2] [Num=141] Sent
+[!] [Client 2] [Num=140] [ACK] Segment acked
+[!] [Client 2] [Num=142] Sent
+[!] [Client 2] [ERROR segment 141] ACK response error: timed out
+[!] [Client 2] [Num=141] Sent
+[!] [Client 2] [Num=142] Sent
+[!] [Client 2] [Num=141] [ACK] Segment acked
+[!] [Client 2] [Num=143] Sent
+[!] [Client 2] [Num=142] [ACK] Segment acked
+[!] [Client 2] [Num=144] Sent
+[!] [Client 2] [Num=143] [ACK] Segment acked
+[!] [Client 2] [Num=145] Sent
+[!] [Client 2] [ERROR segment 144] ACK response error: timed out
+[!] [Client 2] [Num=144] Sent
+[!] [Client 2] [Num=145] Sent
+[!] [Client 2] [Num=145] [ACK] Ack is not valid
+accepted : 145, expected : 144
+[!] [Client 2] [Num=144] Sent
+[!] [Client 2] [Num=145] Sent
+[!] [Client 2] [Num=144] [ACK] Segment acked
+[!] [Client 2] [Num=146] Sent
+[!] [Client 2] [Num=146] [ACK] Ack is not valid
+accepted : 146, expected : 145
+[!] [Client 2] [Num=145] Sent
+[!] [Client 2] [Num=146] Sent
+[!] [Client 2] [Num=145] [ACK] Segment acked
+[!] [Client 2] [Num=147] Sent
+[!] [Client 2] [Num=147] [ACK] Ack is not valid
+accepted : 147, expected : 146
+[!] [Client 2] [Num=146] Sent
+[!] [Client 2] [Num=147] Sent
+[!] [Client 2] [Num=147] [ACK] Ack is not valid
+accepted : 147, expected : 146
+[!] [Client 2] [Num=146] Sent
+[!] [Client 2] [Num=147] Sent
+[!] [Client 2] [Num=146] [ACK] Segment acked
+[!] [Client 2] [Num=148] Sent
+[!] [Client 2] [Num=147] [ACK] Segment acked
+[!] [Client 2] [Num=149] Sent
+[!] [Client 2] [Num=149] [ACK] Ack is not valid
+accepted : 149, expected : 148
+[!] [Client 2] [Num=148] Sent
+[!] [Client 2] [Num=149] Sent
+[!] [Client 2] [Num=148] [ACK] Segment acked
+[!] [Client 2] [Num=150] Sent
+[!] [Client 2] [Num=150] [ACK] Ack is not valid
+accepted : 150, expected : 149
+[!] [Client 2] [Num=149] Sent
+[!] [Client 2] [Num=150] Sent
+[!] [Client 2] [Num=150] [ACK] Ack is not valid
+accepted : 150, expected : 149
+[!] [Client 2] [Num=149] Sent
+[!] [Client 2] [Num=150] Sent
+[!] [Client 2] [Num=149] [ACK] Segment acked
+[!] [Client 2] [Num=151] Sent
+[!] [Client 2] [Num=150] [ACK] Segment acked
+[!] [Client 2] [Num=152] Sent
+[!] [Client 2] [Num=151] [ACK] Segment acked
+[!] [Client 2] [Num=153] Sent
+[!] [Client 2] [Num=152] [ACK] Segment acked
+[!] [Client 2] [Num=154] Sent
+[!] [Client 2] [ERROR segment 153] ACK response error: timed out
+[!] [Client 2] [Num=153] Sent
+[!] [Client 2] [Num=154] Sent
+[!] [Client 2] [Num=153] [ACK] Segment acked
+[!] [Client 2] [Num=155] Sent
+[!] [Client 2] [ERROR segment 154] ACK response error: timed out
+[!] [Client 2] [Num=154] Sent
+[!] [Client 2] [Num=155] Sent
+[!] [Client 2] [Num=154] [ACK] Segment acked
+[!] [Client 2] [Num=156] Sent
+[!] [Client 2] [Num=155] [ACK] Segment acked
+[!] [Client 2] [Num=157] Sent
+[!] [Client 2] [ERROR segment 156] ACK response error: timed out
+[!] [Client 2] [Num=156] Sent
+[!] [Client 2] [Num=157] Sent
+[!] [Client 2] [Num=156] [ACK] Segment acked
+[!] [Client 2] [Num=158] Sent
+[!] [Client 2] [ERROR segment 157] ACK response error: timed out
+[!] [Client 2] [Num=157] Sent
+[!] [Client 2] [Num=158] Sent
+[!] [Client 2] [Num=157] [ACK] Segment acked
+[!] [Client 2] [Num=159] Sent
+[!] [Client 2] [ERROR segment 158] ACK response error: timed out
+[!] [Client 2] [Num=158] Sent
+[!] [Client 2] [Num=159] Sent
+[!] [Client 2] [ERROR segment 158] ACK response error: timed out
+[!] [Client 2] [Num=158] Sent
+[!] [Client 2] [Num=159] Sent
+[!] [Client 2] [Num=159] [ACK] Ack is not valid
+accepted : 159, expected : 158
+[!] [Client 2] [Num=158] Sent
+[!] [Client 2] [Num=159] Sent
+[!] [Client 2] [Num=158] [ACK] Segment acked
+[!] [Client 2] [Num=160] Sent
+[!] [Client 2] [Num=159] [ACK] Segment acked
+[!] [Client 2] [Num=161] Sent
+[!] [Client 2] [Num=160] [ACK] Segment acked
+[!] [Client 2] [Num=162] Sent
+[!] [Client 2] [Num=161] [ACK] Segment acked
+[!] [Client 2] [Num=163] Sent
+[!] [Client 2] [Num=162] [ACK] Segment acked
+[!] [Client 2] [Num=164] Sent
+[!] [Client 2] [Num=163] [ACK] Segment acked
+[!] [Client 2] [Num=165] Sent
+[!] [Client 2] [Num=164] [ACK] Segment acked
+[!] [Client 2] [Num=166] Sent
+[!] [Client 2] [Num=165] [ACK] Segment acked
+[!] [Client 2] [Num=167] Sent
+[!] [Client 2] [Num=166] [ACK] Segment acked
+[!] [Client 2] [Num=168] Sent
+[!] [Client 2] [Num=167] [ACK] Segment acked
+[!] [Client 2] [Num=169] Sent
+[!] [Client 2] [Num=168] [ACK] Segment acked
+[!] [Client 2] [Num=170] Sent
+[!] [Client 2] [Num=169] [ACK] Segment acked
+[!] [Client 2] [Num=171] Sent
+[!] [Client 2] [Num=170] [ACK] Segment acked
+[!] [Client 2] [Num=172] Sent
+[!] [Client 2] [ERROR segment 171] ACK response error: timed out
+[!] [Client 2] [Num=171] Sent
+[!] [Client 2] [Num=172] Sent
+[!] [Client 2] [Num=171] [ACK] Segment acked
+[!] [Client 2] [Num=173] Sent
+[!] [Client 2] [ERROR segment 172] ACK response error: timed out
+[!] [Client 2] [Num=172] Sent
+[!] [Client 2] [Num=173] Sent
+[!] [Client 2] [Num=172] [ACK] Segment acked
+[!] [Client 2] [Num=174] Sent
+[!] [Client 2] [ERROR segment 173] ACK response error: timed out
+[!] [Client 2] [Num=173] Sent
+[!] [Client 2] [Num=174] Sent
+[!] [Client 2] [Num=173] [ACK] Segment acked
+[!] [Client 2] [Num=175] Sent
+[!] [Client 2] [ERROR segment 174] ACK response error: timed out
+[!] [Client 2] [Num=174] Sent
+[!] [Client 2] [Num=175] Sent
+[!] [Client 2] [Num=175] [ACK] Ack is not valid
+accepted : 175, expected : 174
+[!] [Client 2] [Num=174] Sent
+[!] [Client 2] [Num=175] Sent
+[!] [Client 2] [Num=174] [ACK] Segment acked
+[!] [Client 2] [Num=176] Sent
+[!] [Client 2] [Num=175] [ACK] Segment acked
+[!] [Client 2] [Num=177] Sent
+[!] [Client 2] [Num=176] [ACK] Segment acked
+[!] [Client 2] [Num=178] Sent
+[!] [Client 2] [Num=177] [ACK] Segment acked
+[!] [Client 2] [Num=179] Sent
+[!] [Client 2] [Num=178] [ACK] Segment acked
+[!] [Client 2] [Num=180] Sent
+[!] [Client 2] [Num=179] [ACK] Segment acked
+[!] [Client 2] [Num=181] Sent
+[!] [Client 2] [Num=180] [ACK] Segment acked
+[!] [Client 2] [Num=182] Sent
+[!] [Client 2] [Num=182] [ACK] Ack is not valid
+accepted : 182, expected : 181
+[!] [Client 2] [Num=181] Sent
+[!] [Client 2] [Num=182] Sent
+[!] [Client 2] [Num=181] [ACK] Segment acked
+[!] [Client 2] [Num=183] Sent
+[!] [Client 2] [Num=182] [ACK] Segment acked
+[!] [Client 2] [Num=184] Sent
+[!] [Client 2] [Num=183] [ACK] Segment acked
+[!] [Client 2] [Num=185] Sent
+[!] [Client 2] [Num=184] [ACK] Segment acked
+[!] [Client 2] [Num=186] Sent
+[!] [Client 2] [ERROR segment 185] ACK response error: timed out
+[!] [Client 2] [Num=185] Sent
+[!] [Client 2] [Num=186] Sent
+[!] [Client 2] [Num=185] [ACK] Segment acked
+[!] [Client 2] [Num=187] Sent
+[!] [Client 2] [ERROR segment 186] ACK response error: timed out
+[!] [Client 2] [Num=186] Sent
+[!] [Client 2] [Num=187] Sent
+[!] [Client 2] [Num=186] [ACK] Segment acked
+[!] [Client 2] [Num=188] Sent
+[!] [Client 2] [Num=187] [ACK] Segment acked
+[!] [Client 2] [Num=189] Sent
+[!] [Client 2] [Num=189] [ACK] Ack is not valid
+accepted : 189, expected : 188
+[!] [Client 2] [Num=188] Sent
+[!] [Client 2] [Num=189] Sent
+[!] [Client 2] [Num=189] [ACK] Ack is not valid
+accepted : 189, expected : 188
+[!] [Client 2] [Num=188] Sent
+[!] [Client 2] [Num=189] Sent
+[!] [Client 2] [Num=188] [ACK] Segment acked
+[!] [Client 2] [Num=190] Sent
+[!] [Client 2] [Num=189] [ACK] Segment acked
+[!] [Client 2] [Num=191] Sent
+[!] [Client 2] [Num=190] [ACK] Segment acked
+[!] [Client 2] [Num=192] Sent
+[!] [Client 2] [Num=191] [ACK] Segment acked
+[!] [Client 2] [Num=193] Sent
+[!] [Client 2] [Num=193] [ACK] Ack is not valid
+accepted : 193, expected : 192
+[!] [Client 2] [Num=192] Sent
+[!] [Client 2] [Num=193] Sent
+[!] [Client 2] [Num=193] [ACK] Ack is not valid
+accepted : 193, expected : 192
+[!] [Client 2] [Num=192] Sent
+[!] [Client 2] [Num=193] Sent
+[!] [Client 2] [Num=192] [ACK] Segment acked
+[!] [Client 2] [Num=194] Sent
+[!] [Client 2] [Num=194] [ACK] Ack is not valid
+accepted : 194, expected : 193
+[!] [Client 2] [Num=193] Sent
+[!] [Client 2] [Num=194] Sent
+[!] [Client 2] [Num=194] [ACK] Ack is not valid
+accepted : 194, expected : 193
+[!] [Client 2] [Num=193] Sent
+[!] [Client 2] [Num=194] Sent
+[!] [Client 2] [Num=193] [ACK] Segment acked
+[!] [Client 2] [Num=195] Sent
+[!] [Client 2] [Num=195] [ACK] Ack is not valid
+accepted : 195, expected : 194
+[!] [Client 2] [Num=194] Sent
+[!] [Client 2] [Num=195] Sent
+[!] [Client 2] [Num=195] [ACK] Ack is not valid
+accepted : 195, expected : 194
+[!] [Client 2] [Num=194] Sent
+[!] [Client 2] [Num=195] Sent
+[!] [Client 2] [Num=195] [ACK] Ack is not valid
+accepted : 195, expected : 194
+[!] [Client 2] [Num=194] Sent
+[!] [Client 2] [Num=195] Sent
+[!] [Client 2] [Num=194] [ACK] Segment acked
+[!] [Client 2] [Num=196] Sent
+[!] [Client 2] [Num=196] [ACK] Ack is not valid
+accepted : 196, expected : 195
+[!] [Client 2] [Num=195] Sent
+[!] [Client 2] [Num=196] Sent
+[!] [Client 2] [Num=195] [ACK] Segment acked
+[!] [Client 2] [Num=197] Sent
+[!] [Client 2] [Num=196] [ACK] Segment acked
+[!] [Client 2] [Num=198] Sent
+[!] [Client 2] [Num=197] [ACK] Segment acked
+[!] [Client 2] [Num=199] Sent
+[!] [Client 2] [ERROR segment 198] ACK response error: timed out
+[!] [Client 2] [Num=198] Sent
+[!] [Client 2] [Num=199] Sent
+[!] [Client 2] [Num=198] [ACK] Segment acked
+[!] [Client 2] [Num=200] Sent
+[!] [Client 2] [ERROR segment 199] ACK response error: timed out
+[!] [Client 2] [Num=199] Sent
+[!] [Client 2] [Num=200] Sent
+[!] [Client 2] [ERROR segment 199] ACK response error: timed out
+[!] [Client 2] [Num=199] Sent
+[!] [Client 2] [Num=200] Sent
+[!] [Client 2] [Num=199] [ACK] Segment acked
+[!] [Client 2] [Num=201] Sent
+[!] [Client 2] [ERROR segment 200] ACK response error: timed out
+[!] [Client 2] [Num=200] Sent
+[!] [Client 2] [Num=201] Sent
+[!] [Client 2] [Num=200] [ACK] Segment acked
+[!] [Client 2] [Num=202] Sent
+[!] [Client 2] [Num=201] [ACK] Segment acked
+[!] [Client 2] [Num=203] Sent
+[!] [Client 2] [ERROR segment 202] ACK response error: timed out
+[!] [Client 2] [Num=202] Sent
+[!] [Client 2] [Num=203] Sent
+[!] [Client 2] [Num=202] [ACK] Segment acked
+[!] [Client 2] [Num=204] Sent
+[!] [Client 2] [Num=203] [ACK] Segment acked
+[!] [Client 2] [Num=205] Sent
+[!] [Client 2] [Num=205] [ACK] Ack is not valid
+accepted : 205, expected : 204
+[!] [Client 2] [Num=204] Sent
+[!] [Client 2] [Num=205] Sent
+[!] [Client 2] [Num=204] [ACK] Segment acked
+[!] [Client 2] [Num=206] Sent
+[!] [Client 2] [Num=205] [ACK] Segment acked
+[!] [Client 2] [Num=207] Sent
+[!] [Client 2] [Num=206] [ACK] Segment acked
+[!] [Client 2] [Num=208] Sent
+[!] [Client 2] [Num=207] [ACK] Segment acked
+[!] [Client 2] [Num=209] Sent
+[!] [Client 2] [Num=208] [ACK] Segment acked
+[!] [Client 2] [Num=210] Sent
+[!] [Client 2] [Num=210] [ACK] Ack is not valid
+accepted : 210, expected : 209
+[!] [Client 2] [Num=209] Sent
+[!] [Client 2] [Num=210] Sent
+[!] [Client 2] [Num=210] [ACK] Ack is not valid
+accepted : 210, expected : 209
+[!] [Client 2] [Num=209] Sent
+[!] [Client 2] [Num=210] Sent
+[!] [Client 2] [Num=209] [ACK] Segment acked
+[!] [Client 2] [Num=211] Sent
+[!] [Client 2] [Num=210] [ACK] Segment acked
+[!] [Client 2] [Num=212] Sent
+[!] [Client 2] [ERROR segment 211] ACK response error: timed out
+[!] [Client 2] [Num=211] Sent
+[!] [Client 2] [Num=212] Sent
+[!] [Client 2] [Num=211] [ACK] Segment acked
+[!] [Client 2] [Num=213] Sent
+[!] [Client 2] [ERROR segment 212] ACK response error: timed out
+[!] [Client 2] [Num=212] Sent
+[!] [Client 2] [Num=213] Sent
+[!] [Client 2] [Num=212] [ACK] Segment acked
+[!] [Client 2] [Num=214] Sent
+[!] [Client 2] [Num=213] [ACK] Segment acked
+[!] [Client 2] [Num=215] Sent
+[!] [Client 2] [Num=215] [ACK] Ack is not valid
+accepted : 215, expected : 214
+[!] [Client 2] [Num=214] Sent
+[!] [Client 2] [Num=215] Sent
+[!] [Client 2] [Num=214] [ACK] Segment acked
+[!] [Client 2] [Num=216] Sent
+[!] [Client 2] [Num=215] [ACK] Segment acked
+[!] [Client 2] [Num=217] Sent
+[!] [Client 2] [ERROR segment 216] ACK response error: timed out
+[!] [Client 2] [Num=216] Sent
+[!] [Client 2] [Num=217] Sent
+[!] [Client 2] [Num=216] [ACK] Segment acked
+[!] [Client 2] [Num=218] Sent
+[!] [Client 2] [ERROR segment 217] ACK response error: timed out
+[!] [Client 2] [Num=217] Sent
+[!] [Client 2] [Num=218] Sent
+[!] [Client 2] [Num=217] [ACK] Segment acked
+[!] [Client 2] [Num=219] Sent
+[!] [Client 2] [ERROR segment 218] ACK response error: timed out
+[!] [Client 2] [Num=218] Sent
+[!] [Client 2] [Num=219] Sent
+[!] [Client 2] [Num=218] [ACK] Segment acked
+[!] [Client 2] [Num=220] Sent
+[!] [Client 2] [ERROR segment 219] ACK response error: timed out
+[!] [Client 2] [Num=219] Sent
+[!] [Client 2] [Num=220] Sent
+[!] [Client 2] [Num=219] [ACK] Segment acked
+[!] [Client 2] [Num=221] Sent
+[!] [Client 2] [ERROR segment 220] ACK response error: timed out
+[!] [Client 2] [Num=220] Sent
+[!] [Client 2] [Num=221] Sent
+[!] [Client 2] [Num=221] [ACK] Ack is not valid
+accepted : 221, expected : 220
+[!] [Client 2] [Num=220] Sent
+[!] [Client 2] [Num=221] Sent
+[!] [Client 2] [Num=220] [ACK] Segment acked
+[!] [Client 2] [Num=222] Sent
+[!] [Client 2] [Num=222] [ACK] Ack is not valid
+accepted : 222, expected : 221
+[!] [Client 2] [Num=221] Sent
+[!] [Client 2] [Num=222] Sent
+[!] [Client 2] [Num=221] [ACK] Segment acked
+[!] [Client 2] [Num=223] Sent
+[!] [Client 2] [ERROR segment 222] ACK response error: timed out
+[!] [Client 2] [Num=222] Sent
+[!] [Client 2] [Num=223] Sent
+[!] [Client 2] [Num=223] [ACK] Ack is not valid
+accepted : 223, expected : 222
+[!] [Client 2] [Num=222] Sent
+[!] [Client 2] [Num=223] Sent
+[!] [Client 2] [Num=222] [ACK] Segment acked
+[!] [Client 2] [Num=224] Sent
+[!] [Client 2] [Num=224] [ACK] Ack is not valid
+accepted : 224, expected : 223
+[!] [Client 2] [Num=223] Sent
+[!] [Client 2] [Num=224] Sent
+[!] [Client 2] [Num=223] [ACK] Segment acked
+[!] [Client 2] [Num=225] Sent
+[!] [Client 2] [Num=225] [ACK] Ack is not valid
+accepted : 225, expected : 224
+[!] [Client 2] [Num=224] Sent
+[!] [Client 2] [Num=225] Sent
+[!] [Client 2] [Num=225] [ACK] Ack is not valid
+accepted : 225, expected : 224
+[!] [Client 2] [Num=224] Sent
+[!] [Client 2] [Num=225] Sent
+[!] [Client 2] [Num=224] [ACK] Segment acked
+[!] [Client 2] [Num=226] Sent
+[!] [Client 2] [Num=225] [ACK] Segment acked
+[!] [Client 2] [Num=227] Sent
+[!] [Client 2] [ERROR segment 226] ACK response error: timed out
+[!] [Client 2] [Num=226] Sent
+[!] [Client 2] [Num=227] Sent
+[!] [Client 2] [Num=226] [ACK] Segment acked
+[!] [Client 2] [Num=228] Sent
+[!] [Client 2] [ERROR segment 227] ACK response error: timed out
+[!] [Client 2] [Num=227] Sent
+[!] [Client 2] [Num=228] Sent
+[!] [Client 2] [Num=227] [ACK] Segment acked
+[!] [Client 2] [Num=229] Sent
+[!] [Client 2] [Num=228] [ACK] Segment acked
+[!] [Client 2] [Num=230] Sent
+[!] [Client 2] [Num=229] [ACK] Segment acked
+[!] [Client 2] [Num=231] Sent
+[!] [Client 2] [ERROR segment 230] ACK response error: timed out
+[!] [Client 2] [Num=230] Sent
+[!] [Client 2] [Num=231] Sent
+[!] [Client 2] [Num=230] [ACK] Segment acked
+[!] [Client 2] [Num=232] Sent
+[!] [Client 2] [ERROR segment 231] ACK response error: timed out
+[!] [Client 2] [Num=231] Sent
+[!] [Client 2] [Num=232] Sent
+[!] [Client 2] [Num=231] [ACK] Segment acked
+[!] [Client 2] [Num=233] Sent
+[!] [Client 2] [ERROR segment 232] ACK response error: timed out
+[!] [Client 2] [Num=232] Sent
+[!] [Client 2] [Num=233] Sent
+[!] [Client 2] [Num=232] [ACK] Segment acked
+[!] [Client 2] [Num=234] Sent
+[!] [Client 2] [ERROR segment 233] ACK response error: timed out
+[!] [Client 2] [Num=233] Sent
+[!] [Client 2] [Num=234] Sent
+[!] [Client 2] [Num=233] [ACK] Segment acked
+[!] [Client 2] [Num=235] Sent
+[!] [Client 2] [Num=234] [ACK] Segment acked
+[!] [Client 2] [Num=235] [ACK] Segment acked
+[!] [Client 2] [FIN] Sending FIN .....
+[!] [Client 2] [FIN] Acked

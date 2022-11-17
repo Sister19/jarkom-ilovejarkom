@@ -112,18 +112,21 @@ class Server:
         )
 
         # Waiting ACK from client
-        data, addr = self.conn.listen_single_segment()
-        seg = Segment().build_from_bytes(bytes_data=data)
+        try:
+            data, addr = self.conn.listen_single_segment(2)
+            seg = Segment().build_from_bytes(bytes_data=data)
 
-        if client_addr != addr:
-            print("[!] Handshake interrupted by another client, aborting...")
-            return False
+            if client_addr != addr:
+                print("[!] Handshake interrupted by another client, aborting...")
+                return False
 
-        if seg.get_header().flag.value != ACK_FLAG:
-            print("[!] Wrong flag recieved from client, aborting...")
-            return False
+            if seg.get_header().flag.value != ACK_FLAG:
+                print("[!] Wrong flag recieved from client, aborting...")
+                return False
 
-        print("[!] [Handshake] Received ACK from client, handshake success!")
+            print("[!] [Handshake] Received ACK from client, handshake success!")
+        except Exception as e:
+            print(e)
         return True
 
     # PARALELL INI UNTUK MENGAKTIFKAN FITURNYA
@@ -177,7 +180,7 @@ class Server:
         first_segment = 0
         last_segment = 0
         n = len(segments)
-        window_size = min(n, 3)
+        window_size = min(n, 2)
 
         # SEND METADATA
         ack_metadata = False
@@ -196,6 +199,7 @@ class Server:
             except Exception as e:
                 print(e)
 
+        client_addr_string = self.__addr_toString(client_addr)
         # SEND SEGMENTS
         # NON PARALLEL VERSION :
         if not self.data_parallel:
@@ -209,7 +213,6 @@ class Server:
                     try:
                         data, addr = self.conn.listen_single_segment(1)
                         addr_string = self.__addr_toString(addr)
-                        client_addr_string = self.__addr_toString(client_addr)
                         self.address_queue[addr_string].append(data)
                         if self.address_queue[client_addr_string] : # Ini handle ack dari client2 diterima thread1, jadinya thread2 gadapet ack alhasil timeout terus
                             client_data = self.address_queue[client_addr_string].pop(0)
@@ -217,19 +220,21 @@ class Server:
                             if ack_seg.get_header().flag.value == ACK_FLAG:
                                 if ack_seg.ack_num == first_segment + 1:
                                     print(
-                                        f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Segment acked"
+                                        f"[!] [Client {number}] [Num={ack_seg.ack_num}] [ACK] Segment acked"
                                     )
                                     first_segment += 1
-                                else:
-                                    last_segment = first_segment
+                                elif ack_seg.ack_num > first_segment + 1:
                                     print(
-                                        f"[!] [Client {number}] [Num={first_segment+1}] [ACK] Ack is not valid"
+                                        f"[!] [Client {number}] [Num={ack_seg.ack_num}] [ACK] Ack is not valid"
                                     )
+                                    print(f"accepted : {ack_seg.ack_num}, expected : {first_segment+1}")
+                                    last_segment = first_segment
                     except Exception as e:
+
                         last_segment = first_segment
                         print(
                             f"[!] [Client {number}] [ERROR segment {first_segment+1}] ACK response error: {str(e)}"
-                        )
+                            )
 
         # PARALLEL VERSION:
         else:
@@ -284,11 +289,13 @@ class Server:
                 client_addr,
             )
             print(f"[!] [Client {number}] [FIN] Sending FIN .....")
-            data, addr = self.conn.listen_single_segment(2)
+            data, addr = self.conn.listen_single_segment(1)
             ack_seg = Segment().build_from_bytes(bytes_data=data)
-
-            if ack_seg.get_header().flag.value == ACK_FLAG:
-                print(f"[!] [Client {number}] [FIN] Acked")
+            addr_string = self.__addr_toString(addr)
+            self.address_queue[addr_string].append(data)
+            if self.address_queue[client_addr_string] : # Ini handle ack dari client2 diterima thread1, jadinya thread2 gadapet ack alhasil timeout teru
+                if ack_seg.get_header().flag.value == ACK_FLAG:
+                    print(f"[!] [Client {number}] [FIN] Acked")
         except Exception as e:
             print(e)
 
@@ -330,7 +337,7 @@ class Server:
     def __listen_data_parallel(self, number, vars,n, addr):
         while (vars["first_segment"] < n):
             try:
-                data, addr = self.conn.listen_single_segment(0.8)
+                data, addr = self.conn.listen_single_segment(1)
                 addr_string = self.__addr_toString(addr)
                 self.address_queue[addr_string].append(data)
             except Exception as e:
@@ -348,13 +355,14 @@ class Server:
                 ack_seg = Segment().build_from_bytes(bytes_data=data)
                 if ack_seg.get_header().flag.value == ACK_FLAG:
                     if ack_seg.ack_num == vars["first_segment"] + 1:
-                        print(f"[!] [Client {number}] [Num={vars['first_segment']+1}] [ACK] Segment acked")
+                        print(f"[!] [Client {number}] [Num={ack_seg.ack_num}] [ACK] Segment acked")
                         vars["first_segment"] += 1
-                    else:
-                        vars["last_segment"] = vars["first_segment"]
+                    elif ack_seg.ack_num > vars["first_segment"] + 1:
                         print(
-                            f"[!] [Client {number}] [Num={vars['first_segment']+1}] [ACK] Ack is not valid"
+                            f"[!] [Client {number}] [Num={ack_seg.ack_num}] [ACK] Ack is not valid"
                         )
+                        print(f"accepted : {ack_seg.ack_num}, expected : {vars['first_segment']+1}")
+                        vars["last_segment"] = vars["first_segment"]
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

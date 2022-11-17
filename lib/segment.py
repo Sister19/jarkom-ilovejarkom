@@ -154,15 +154,14 @@ if __name__ == "__main__":
         ack_num=1,
         flag=[SYN_FLAG, ACK_FLAG],
     )
-    data = b"capek kuliah"
     seg = Segment()
     seg.set_header(header)
     seg.set_payload(data)
     seg.set_checksum()
 
     # Simulate sending
-    seg_sender = seg.get_bytes()
-    recv = Segment()
-    recv.set_from_bytes(seg_sender)
+    # seg_sender = seg.get_bytes()
+    # recv = Segment()
+    # recv.set_from_bytes(seg_sender)
     # print(recv)
     # print(len(recv.get_bytes()))
